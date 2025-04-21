@@ -11,6 +11,7 @@ import imgAPI from 'public/images/imgAPI';
 import useStyles from './about-style';
 import imagetest from '../../public/images/imagen_about.png';
 import imagetest2 from '../../public/images/imagen-2-about.png';
+import imagetest3 from '../../public/images/education/imagen-3-about.webp';
 function About() {
   const { classes, cx } = useStyles();
   const { classes: text } = useText();
@@ -26,7 +27,7 @@ function About() {
               <Fragment>
                 <div className={cx(classes.illustration, classes.one)} />
                 <figure className={cx(classes.illustration, classes.two)}>
-                  <img src={imgAPI.education[11]} alt="about" />
+                  <img src={imagetest3} alt="about" />
                 </figure>
                 <figure className={cx(classes.illustration, classes.three)}>
                   <img src={imagetest2} alt="about" />

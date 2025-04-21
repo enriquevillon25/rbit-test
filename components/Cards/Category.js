@@ -13,15 +13,11 @@ function Category(props) {
   } = props;
   return (
     <div className={classes.cardWrap}>
-      <span className={classes.fold} />
       <ButtonBase
         className={classes.categoryCard}
         focusRipple
         href="#"
       >
-        <span className={classes.figure}>
-          <img src={img} alt="img" />
-        </span>
         <span className={classes.property}>
           <Typography component="span" className={classes.title}>
             {title}
@@ -29,6 +25,9 @@ function Category(props) {
           <Typography component="span" className={classes.descCategory}>
             {desc}
           </Typography>
+        </span>
+        <span className={classes.figure}>
+          <img src={img} alt="img" />
         </span>
       </ButtonBase>
     </div>

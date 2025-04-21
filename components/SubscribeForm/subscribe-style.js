@@ -6,7 +6,7 @@ const subscribeStyles = makeStyles({ uniqId: 'subscribe' })(theme => ({
     textAlign: 'center',
   },
   parallaxWrap: {
-    height: 570,
+    height: 270,
     width: '100%'
   },
   form: {
@@ -16,7 +16,7 @@ const subscribeStyles = makeStyles({ uniqId: 'subscribe' })(theme => ({
     marginTop: theme.spacing(-45),
     width: '100%',
     display: 'block',
-    color: theme.palette.text.secondary,
+    // color: theme.palette.text.secondary,
     position: 'relative',
     bottom: theme.spacing(-10),
     padding: theme.spacing(5, 2),

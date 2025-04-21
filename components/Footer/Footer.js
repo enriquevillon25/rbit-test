@@ -13,44 +13,28 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import IconButton from "@mui/material/IconButton";
 import SelectLang from "../LangSwitch/Select";
-import logo from "public/images/education-logo.svg";
+import logo from "public/images/education-logo.png";
 import brand from "public/text/brand";
 import useStyles from "./footer-style";
 
 function Copyright() {
   return (
     <Typography variant="body2" display="block" color="textSecondary">
-      &copy;&nbsp;
-      {brand.education.footerText}
+      &copy;&nbsp; Rbit Servicios 2025
     </Typography>
   );
 }
 
 const footers = [
   {
-    title: "Company",
-    description: ["Team", "History", "Contact us", "Locations"],
-    link: ["#team", "#history", "#contact-us", "#locations"],
-  },
-  {
-    title: "Resources",
+    title: "Empresa",
     description: [
-      "Resource",
-      "Resource name",
-      "Another resource",
-      "Final resource",
+      "Carrer de Bailèn, 109, Local 2, Eixample, 08009 Barcelona, España",
+      "Lunes a sabados 10-20 h",
+      "666266295",
+      "rbit@gmail.com",
     ],
-    link: [
-      "#resource",
-      "#resource-name",
-      "#another-resource",
-      "#final-resource",
-    ],
-  },
-  {
-    title: "Legal",
-    description: ["Privacy policy", "Terms of use"],
-    link: ["#privacy-policy", "#terms-of-use"],
+    link: ["#team"],
   },
 ];
 
@@ -78,8 +62,7 @@ function Footer(props) {
               className={classes.footerDesc}
               gutterBottom
             >
-              Nam posuere accumsan porta. Integer sed ante tincidunt tincidunt
-              sit amet sed libero.
+              Solucionamos todos tus problemas informaticos
             </Typography>
             <Copyright />
           </Box>
@@ -94,7 +77,7 @@ function Footer(props) {
               <Grid
                 item
                 xs={12}
-                md={3}
+                md={8}
                 key={footer.title}
                 className={classes.siteMapItem}
               >

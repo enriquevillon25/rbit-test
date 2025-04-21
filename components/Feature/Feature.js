@@ -10,7 +10,6 @@ import { useTranslation } from "next-i18next";
 import { useText } from "theme/common";
 import Title from "../Title";
 import useStyles from "./feature-style";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 
 function Feature() {
   const { classes } = useStyles();
@@ -49,13 +48,16 @@ function Feature() {
           animateIn="fadeIn"
           offset={100}
           afterAnimatedIn={handlePlay}
-        >
+        > 
           <div className={classes.counterWrap}>
-            <Grid container spacing={isDesktop ? 2 : 2}>
+            <Grid container spacing={isDesktop ? 2 : 2} gap={!isDesktop && 4}>
               <Grid sm={4} xs={12} item>
                 <div className={classes.counterItem}>
                   <figure>
-                    <img src="/images/education/customatetion.svg" alt="presenter" />
+                    <img
+                      src="/images/education/customatetion.svg"
+                      alt="presenter"
+                    />
                   </figure>
                   <div className={classes.text}>
                     <Typography

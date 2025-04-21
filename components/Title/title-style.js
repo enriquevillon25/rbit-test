@@ -53,7 +53,7 @@ const titleStyles = makeStyles({ uniqId: 'title' })((theme, _params, classes) =>
       },
       '&:before': {
         content: '""',
-        height: 15,
+        height: 8,
         width: '90%',
         position: 'absolute',
         bottom: 10,

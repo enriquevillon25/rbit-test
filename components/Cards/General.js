@@ -27,7 +27,7 @@ export default function General(props) {
         <Typography className={text.paragraph}>
           {desc}
         </Typography>
-        <div className={classes.property}>
+        {/* <div className={classes.property}>
           <div className={classes.rating}>
             {[...Array(rating)].map((e, index) => (
               <StarIcon className={classes.starIcon} key={index.toString()} />
@@ -37,7 +37,7 @@ export default function General(props) {
             $
             {price}
           </strong>
-        </div>
+        </div> */}
         <Button
           className={classes.button}
           color="primary"

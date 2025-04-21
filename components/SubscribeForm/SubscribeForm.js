@@ -49,7 +49,8 @@ function SubscribeForm() {
               value={value}
             />
             <Button variant="contained" size="large" color="primary">
-              {t('education-landing.subscribe_subscribe')}
+              {/* {t('education-landing.subscribe_subscribe')} */}
+              ENVIAR
             </Button>
           </form>
         </Paper>

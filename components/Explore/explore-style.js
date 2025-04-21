@@ -9,7 +9,7 @@ const useStyles = makeStyles({ uniqId: 'explore' })((theme, _params, classes) =>
       padding: theme.spacing(5, 0)
     },
     [theme.breakpoints.up('md')]: {
-      backgroundImage: theme.palette.mode === 'light' ? `linear-gradient(to left, rgba(255, 255, 255, 0) 20%, ${alpha(theme.palette.secondary.light, 0.3)} 10%)` : `linear-gradient(to left, rgba(255, 255, 255, 0) 20%, ${alpha(theme.palette.secondary.dark, 0.3)} 10%)`
+      // backgroundImage: theme.palette.mode === 'light' ? `linear-gradient(to left, rgba(255, 255, 255, 0) 20%, ${alpha(theme.palette.secondary.light, 0.3)} 10%)` : `linear-gradient(to left, rgba(255, 255, 255, 0) 20%, ${alpha(theme.palette.secondary.dark, 0.3)} 10%)`
     },
     '& > .MuiContainer-root': {
       position: 'relative'

@@ -7,7 +7,7 @@ const aboutStyles = makeStyles({ uniqId: 'about' })(theme => ({
     backgroundSize: '8%',
     position: 'relative',
     color: theme.palette.common.white,
-    padding: theme.spacing(15, 0),
+    padding: theme.spacing(9, 0),
     [theme.breakpoints.down('md')]: {
       padding: theme.spacing(8, 0),
     },

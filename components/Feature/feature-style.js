@@ -4,7 +4,7 @@ const counterStyles = makeStyles({ uniqId: 'counter' })(theme => ({
   root: {
     position: 'relative',
     width: '100%',
-    paddingTop: theme.spacing(5),
+    // paddingTop: theme.spacing(5),
     [theme.breakpoints.down('lg')]: {
       paddingTop: theme.spacing(10),
       paddingBottom: 20
