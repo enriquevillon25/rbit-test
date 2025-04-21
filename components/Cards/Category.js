@@ -27,7 +27,7 @@ function Category(props) {
           </Typography>
         </span>
         <span className={classes.figure}>
-          <img src={img} alt="img" />
+          {/* <img src={img} alt="img" /> */}
         </span>
       </ButtonBase>
     </div>
