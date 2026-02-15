@@ -4,11 +4,7 @@ import Head from "next/head";
 import { makeStyles } from "tss-react/mui";
 import CssBaseline from "@mui/material/CssBaseline";
 import useMediaQuery from "@mui/material/useMediaQuery";
-// Use this below for Server Side Render/Translation (SSR)
-// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-// Use this below for Static Site Generation (SSG)
 import { getStaticPaths, makeStaticProps } from "lib/getStatic";
-import brand from "public/text/brand";
 import MainContainer from "components/MainContainer";
 import Banner from "components/Banner";
 import Feature from "components/Feature";
@@ -16,10 +12,8 @@ import PopularCourse from "components/PopularCourse";
 import Explore from "components/Explore";
 import About from "components/About";
 import Testimonials from "components/Testimonials";
-import Blog from "components/Blog";
 import Subscribe from "components/SubscribeForm";
 import PageNav from "components/PageNav";
-import Notification from "components/Notification";
 
 const sectionMargin = (margin) => margin * 20;
 const useStyles = makeStyles({ uniqId: "home" })((theme) => ({
@@ -89,9 +83,6 @@ function Landing(props) {
             <div id="testimonials" className={classes.spaceTop}>
               <Testimonials />
             </div>
-            <section id="blog" className={classes.spaceTopShort}>
-              <Blog />
-            </section>
             <section id="subscribe" className={classes.spaceTopShort}>
               <Subscribe />
             </section>

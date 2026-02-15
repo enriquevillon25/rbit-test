@@ -31,7 +31,7 @@ function Blog() {
   const { classes } = useStyles();
   const blogData = [
     {
-      title: 'Vestibulum vitae tristique urna. Mauris non cursus quam',
+      title: 'Vestibulumaaa vitae tristique urna. Mauris non cursus quam',
       category: 'Science - Math',
       date: 'Feb 08 2021'
     },
