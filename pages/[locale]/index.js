@@ -8,11 +8,11 @@ import { getStaticPaths, makeStaticProps } from "lib/getStatic";
 import MainContainer from "components/MainContainer";
 import Banner from "components/Banner";
 import Feature from "components/Feature";
-import PopularCourse from "components/PopularCourse";
-import Explore from "components/Explore";
-import About from "components/About";
-import Testimonials from "components/Testimonials";
-import Subscribe from "components/SubscribeForm";
+import PopularCourse from 'components/PopularCourse';
+import Explore from 'components/Explore';
+import About from 'components/About';
+import Testimonials from 'components/Testimonials';
+import Subscribe from 'components/SubscribeForm';
 import PageNav from "components/PageNav";
 
 const sectionMargin = (margin) => margin * 20;

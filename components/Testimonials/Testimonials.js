@@ -1,47 +1,49 @@
-import React, { useRef } from 'react';
-import Carousel from 'react-slick';
-import IconButton from '@mui/material/IconButton';
-import { useTranslation } from 'next-i18next';
-import Title from '../Title';
-import TestiCard from '../Cards/Testimonial';
-import useStyle from './testi-style';
+import React, { useRef } from "react";
+import Carousel from "react-slick";
+import IconButton from "@mui/material/IconButton";
+import { useTranslation } from "next-i18next";
+import Title from "../Title";
+import TestiCard from "../Cards/Testimonial";
+import useStyle from "./testi-style";
 
 const testiContent = [
   {
-    text: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam nec ex aliquet, aliquam neque non.',
-    name: 'John Doe',
-    title: 'Chief Digital Officer',
+    text: "José es nuestro informático de confianza desde hace años. Profesional, rápido y con un trato excelente. 100% recomendable.",
+    name: "Cliente de larga duración",
   },
   {
-    text: 'Vestibulum sit amet tortor sit amet libero lobortis semper at et odio. In eu tellus tellus. Pellentesque ullamcorper aliquet ultrices. Aenean facilisis vitae purus facilisis semper. Nam vitae scelerisque lorem, quis tempus libero.',
-    name: 'Jean Doe',
-    title: 'Chief Digital Officer',
+    text: "Llevé mi móvil con un problema grave y lo solucionaron rápido y a buen precio. Servicio transparente y profesional.",
+    name: "Peter Johansson",
   },
   {
-    text: 'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
-    name: 'Jena Doe',
-    title: 'Graphic Designer',
+    text: "Los mejores profesionales en recuperación de datos. Recuperaron mi disco duro de 10TB cuando lo daba por perdido.",
+    name: "Jose Antonio Rodriguez",
   },
   {
-    text: 'Sed imperdiet enim ligula, vitae viverra justo porta vel.',
-    name: 'Jovelin Doe',
-    title: 'Senior Graphic Designer',
+    text: "Siempre resuelve cualquier problema informático, grande o pequeño. Servicio rápido, eficiente y de primera.",
+    name: "Jessika Klingspor",
   },
   {
-    text: 'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
-    name: 'Jihan Doe',
-    title: 'CEO Software House',
+    text: "Me dejó el ordenador como nuevo. Trato cercano y profesional. Excelente trabajo.",
+    name: "Luis Tajada",
   },
   {
-    text: 'Vestibulum sit amet tortor sit amet libero lobortis semper at et odio. In eu tellus tellus. Pellentesque ullamcorper aliquet ultrices. Aenean facilisis vitae purus facilisis semper. Nam vitae scelerisque lorem, quis tempus libero.',
-    name: 'Jovelin Doe',
-    title: 'Senior Graphic Designer',
+    text: "Reparó mi iPhone rápidamente en fechas complicadas. Siempre bien atendido.",
+    name: "Laure Zizine",
+  },
+  {
+    text: "Instalación en casa impecable. Profesional de toda confianza.",
+    name: "Joaquim Clos",
+  },
+  {
+    text: "Profesional rápido, inteligente y muy amable. Precio acorde a la calidad que recibes.",
+    name: "Nicolas Cortes",
   },
 ];
 
 function Testimonials() {
   // Translation function
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   const slider = useRef(null);
   const { classes, cx } = useStyle();
@@ -54,19 +56,21 @@ function Testimonials() {
     slidesToShow: 2,
     arrows: false,
     pauseOnHover: true,
-    responsive: [{
-      breakpoint: 960,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      }
-    }]
+    responsive: [
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <div className={classes.root}>
       <Title
-        head={t('education-landing.testimonials_title')}
-        desc={t('education-landing.testimonials_desc')}
+        head={t("education-landing.testimonials_title")}
+        desc={t("education-landing.testimonials_desc")}
         align="center"
         color="primary"
       />

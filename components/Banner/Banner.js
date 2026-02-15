@@ -94,9 +94,9 @@ function Banner() {
             <Grid item lg={6} className={classes.decoGrid}>
               <div className={classes.decoBanner}>
                 <div className={classes.artworkBg}>
-                  {/* <div className={classes.oval} /> */}
+                  <div className={classes.oval} />
                   <div className={cx(classes.parallaxScene, classes.back)}>
-                    {/* <animated.div
+                    <animated.div
                       style={{ transform: position.xy.interpolate(trans1) }}
                     >
                       <span className={classes.iconThree} />
@@ -105,14 +105,14 @@ function Banner() {
                       style={{ transform: position.xy.interpolate(trans2) }}
                     >
                       <span className={classes.iconTwo} />
-                    </animated.div> */}
+                    </animated.div>
                   </div>
-                  {/* <img
+                  <img
                     src="/images/education/banner-artwork.png"
                     alt="artwork"
-                  /> */}
-                  {/* <div className={cx(classes.parallaxScene, classes.front)}> */}
-                  {/* <animated.div
+                  />
+                  <div className={cx(classes.parallaxScene, classes.front)}>
+                    <animated.div
                       style={{ transform: position.xy.interpolate(trans3) }}
                     >
                       <span className={classes.iconFour} />
@@ -121,8 +121,8 @@ function Banner() {
                       style={{ transform: position.xy.interpolate(trans4) }}
                     >
                       <span className={classes.iconOne} />
-                    </animated.div> */}
-                  {/* </div> */}
+                    </animated.div>
+                  </div>
                 </div>
               </div>
             </Grid>

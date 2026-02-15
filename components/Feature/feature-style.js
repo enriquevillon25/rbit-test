@@ -27,7 +27,7 @@ const counterStyles = makeStyles({ uniqId: 'counter' })(theme => ({
   },
   counterWrap: {
     [theme.breakpoints.up('sm')]: {
-      margin: theme.spacing(10, 0, 5)
+      margin: theme.spacing(6, 0, 5)
     }
   },
   counterItem: {

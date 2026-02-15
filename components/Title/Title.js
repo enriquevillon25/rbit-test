@@ -36,9 +36,9 @@ export default function Title(props) {
           {head}
         </span>
       </Typography>
-      <Typography className={cx(classes.desc, text.subtitle2)}>
+      {/* <Typography className={cx(classes.desc, text.subtitle2)}>
         {desc}
-      </Typography>
+      </Typography> */}
     </div>
   );
 }
