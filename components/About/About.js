@@ -1,22 +1,23 @@
-import React, { Fragment } from 'react';
-import ScrollAnimation from 'react-scroll-animation-wrapper';
-import Container from '@mui/material/Container';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import { useTranslation } from 'next-i18next';
-import { useText } from 'theme/common';
-import imgAPI from 'public/images/imgAPI';
-import useStyles from './about-style';
-import imagetest from '../../public/images/imagen_about.png';
-import imagetest2 from '../../public/images/imagen-2-about.png';
-import imagetest3 from '../../public/images/education/imagen-3-about.webp';
+import React, { Fragment } from "react";
+import ScrollAnimation from "react-scroll-animation-wrapper";
+import Container from "@mui/material/Container";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import { useTranslation } from "next-i18next";
+import { useText } from "theme/common";
+import imgAPI from "public/images/imgAPI";
+import useStyles from "./about-style";
+import imagetest from "../../public/images/imagen_about.png";
+import imagetest2 from "../../public/images/imagen-2-about.png";
+import imagetest3 from "../../public/images/education/imagen-3-about.webp";
+import { handleWhatsApp } from "utils/sends";
 function About() {
   const { classes, cx } = useStyles();
   const { classes: text } = useText();
-  const { t } = useTranslation('common');
-  const isTablet = useMediaQuery(theme => theme.breakpoints.down('md'));
+  const { t } = useTranslation("common");
+  const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   return (
     <div className={classes.root}>
@@ -50,17 +51,16 @@ function About() {
               <div>
                 <div className={classes.title}>
                   <Typography variant="h3" className={text.title}>
-                    <span>
-                      {t('education-landing.about_title')}
-                    </span>
+                    <span>{t("education-landing.about_title")}</span>
                   </Typography>
                 </div>
                 <Typography className={text.paragraph}>
-                  {t('education-landing.about_desc')}
+                  {t("education-landing.about_desc")}
                 </Typography>
                 <Button
                   className={classes.white}
                   variant="contained"
+                  onClick={handleWhatsApp}
                 >
                   Agendar
                 </Button>

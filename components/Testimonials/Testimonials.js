@@ -9,35 +9,43 @@ import useStyle from "./testi-style";
 const testiContent = [
   {
     text: "José es nuestro informático de confianza desde hace años. Profesional, rápido y con un trato excelente. 100% recomendable.",
-    name: "Cliente de larga duración",
+    name: "Andrea deDo",
+    rating: 5,
   },
   {
     text: "Llevé mi móvil con un problema grave y lo solucionaron rápido y a buen precio. Servicio transparente y profesional.",
     name: "Peter Johansson",
+    rating: 5,
   },
   {
     text: "Los mejores profesionales en recuperación de datos. Recuperaron mi disco duro de 10TB cuando lo daba por perdido.",
     name: "Jose Antonio Rodriguez",
+    rating: 5,
   },
   {
     text: "Siempre resuelve cualquier problema informático, grande o pequeño. Servicio rápido, eficiente y de primera.",
     name: "Jessika Klingspor",
+    rating: 5,
   },
   {
     text: "Me dejó el ordenador como nuevo. Trato cercano y profesional. Excelente trabajo.",
     name: "Luis Tajada",
+    rating: 4.5,
   },
   {
     text: "Reparó mi iPhone rápidamente en fechas complicadas. Siempre bien atendido.",
     name: "Laure Zizine",
+    rating: 5,
   },
   {
     text: "Instalación en casa impecable. Profesional de toda confianza.",
     name: "Joaquim Clos",
+    rating: 4.9,
   },
   {
     text: "Profesional rápido, inteligente y muy amable. Precio acorde a la calidad que recibes.",
     name: "Nicolas Cortes",
+    rating: 5,
   },
 ];
 
@@ -82,7 +90,7 @@ function Testimonials() {
                 <TestiCard
                   text={item.text}
                   name={item.name}
-                  title={item.title}
+                  rating={item.rating}
                 />
               </div>
             ))}

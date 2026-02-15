@@ -1,13 +1,13 @@
 module.exports = {
   education: {
-    name: 'Education',
-    desc: 'Luxiren Education - React Single Landing Page Template',
-    prefix: 'Education',
-    footerText: 'Education Theme 2021',
-    logoText: 'Luxiren Education',
-    projectName: 'Education',
-    url: 'luxireact.ux-maestro.com/education',
-    img: '/static/images/education-logo.png',
-    notifMsg: 'Donec sit amet nulla sed arcu pulvinar ultricies commodo id ligula.'
+    name: 'RBIT Informática i Telecomunicaciones',
+    desc: 'Venta, reparación y mantenimiento de equipos informáticos y soluciones tecnológicas.',
+    prefix: 'RBIT',
+    footerText: 'RBIT Informática i Telecomunicaciones © 2026',
+    logoText: 'RBIT',
+    projectName: 'RBIT Web',
+    url: 'rbitinformatica.com',
+    img: '/static/images/rbit-logo.png',
+    notifMsg: 'Soluciones tecnológicas profesionales para empresas y particulares.'
   }
 };

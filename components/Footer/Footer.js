@@ -32,7 +32,7 @@ const footers = [
       "Carrer de Bailèn, 109, Local 2, Eixample, 08009 Barcelona, España",
       "Lunes a sabados 10-20 h",
       "666266295",
-      "rbit@gmail.com",
+      "jvillonl@rbitinformatica.com",
     ],
     link: ["#team"],
   },

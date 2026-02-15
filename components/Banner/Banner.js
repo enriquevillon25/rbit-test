@@ -13,6 +13,7 @@ import { useTranslation } from "next-i18next";
 import { useText } from "theme/common";
 import useStyles from "./banner-style";
 import { Button } from "@mui/material";
+import { handleWhatsApp } from "utils/sends";
 
 const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
 const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`;
@@ -83,6 +84,7 @@ function Banner() {
                   color="secondary"
                   variant="outlined"
                   // className={classes.button}
+                  onClick={handleWhatsApp}
                   style={{ zIndex: 10, background: "white", color: "black" }}
                 >
                   Diagnostico gratuito
