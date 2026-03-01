@@ -20,7 +20,7 @@ import useStyles from "./footer-style";
 function Copyright() {
   return (
     <Typography variant="body2" display="block" color="textSecondary">
-      &copy;&nbsp; Rbit Servicios 2025
+      &copy;&nbsp; Rbit Servicios 2026
     </Typography>
   );
 }
