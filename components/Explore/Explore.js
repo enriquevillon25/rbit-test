@@ -13,7 +13,7 @@ import imgLaptop from "public/images/laptop.jpg";
 import imgMoviles from "public/images/moviles.jpg";
 import imgComputer from "public/images/computer.jpg";
 import imgiPhones from "public/images/iphones.webp";
-import imgMacbooks from "public/images/macbooks.jpeg";
+import reparaionPhone from "public/images/reparation-phone.png";
 import DotParallax from "../Parallax/Dots";
 import CategoryCard from "../Cards/Category";
 import Title from "../Title";
@@ -31,7 +31,7 @@ const categoriesData = [
     desc: "Nulla lobortis nunc vitae nisi semper semper.",
   },
   {
-    img: imgMoviles,
+    img: reparaionPhone,
     title: "Reparar moviles",
     desc: "Nulla lobortis nunc vitae nisi semper semper.",
   },
@@ -41,7 +41,7 @@ const categoriesData = [
     desc: "Nulla lobortis nunc vitae nisi semper semper.",
   },
   {
-    img: imgMacbooks,
+    img: reparaionPhone,
     title: "Reparar Macbooks",
     desc: "Nulla lobortis nunc vitae nisi semper semper.",
   },
