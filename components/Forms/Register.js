@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import routeLink from 'public/text/link';
 import { useText } from 'theme/common';
 import SocialAuth from './SocialAuth';

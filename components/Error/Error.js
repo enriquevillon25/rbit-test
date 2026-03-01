@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import routeLink from 'public/text/link';
 import Link from '../Link';
 import useStyles from './error-style';

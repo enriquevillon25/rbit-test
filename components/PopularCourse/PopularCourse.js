@@ -4,7 +4,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Carousel from 'react-slick';
 import IconButton from '@mui/material/IconButton';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import imgAPI from 'public/images/imgAPI';
 import DotParallax from '../Parallax/Dots';
 import Title from '../Title';

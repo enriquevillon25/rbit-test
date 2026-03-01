@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Scrollspy from "react-scrollspy";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "lib/useTranslation";
 import Settings from "./Settings";
 import MobileMenu from "./MobileMenu";
 import logo from "public/images/logo-rbit.jpg";

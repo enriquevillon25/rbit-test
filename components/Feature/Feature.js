@@ -6,7 +6,7 @@ import ScrollAnimation from "react-scroll-animation-wrapper";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "lib/useTranslation";
 import { useText } from "theme/common";
 import Title from "../Title";
 import useStyles from "./feature-style";

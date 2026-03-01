@@ -5,7 +5,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "lib/useTranslation";
 import { useText } from "theme/common";
 import imgAPI from "public/images/imgAPI";
 import useStyles from "./about-style";

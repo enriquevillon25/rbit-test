@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import routeLink from 'public/text/link';
 import useStyles from './header-style';
 import navMenu from './menu';

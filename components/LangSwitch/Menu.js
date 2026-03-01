@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import CheckIcon from '@mui/icons-material/Check';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';

@@ -16,7 +16,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Zoom from '@mui/material/Zoom';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import imgAPI from 'public/images/imgAPI';
 import yt from 'youtube';
 import Title from '../Title';

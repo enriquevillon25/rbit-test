@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import Carousel from "react-slick";
 import IconButton from "@mui/material/IconButton";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "lib/useTranslation";
 import Title from "../Title";
 import TestiCard from "../Cards/Testimonial";
 import useStyle from "./testi-style";

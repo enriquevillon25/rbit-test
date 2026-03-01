@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { useSpring, animated } from "react-spring";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "lib/useTranslation";
 import { useText } from "theme/common";
 import useStyles from "./banner-style";
 import { Button } from "@mui/material";

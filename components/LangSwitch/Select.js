@@ -5,7 +5,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SelectMUI from '@mui/material/Select';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import { useRouter } from 'next/router';
 import useStyles from '../Footer/footer-style';
 import languageDetector from 'lib/languageDetector';

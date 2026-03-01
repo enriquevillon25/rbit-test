@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import brand from 'public/text/brand';
 import logo from 'public/images/education-logo.svg';
 import routeLink from 'public/text/link';

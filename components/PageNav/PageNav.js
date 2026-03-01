@@ -4,7 +4,7 @@ import Scrollspy from 'react-scrollspy';
 import Fab from '@mui/material/Fab';
 import ArrowIcon from '@mui/icons-material/ArrowUpward';
 import Tooltip from '@mui/material/Tooltip';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import navMenu from '../Header/menu';
 import useStyles from './pagenav-style';
 

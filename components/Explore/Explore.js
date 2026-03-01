@@ -7,7 +7,7 @@ import ButtonBase from "@mui/material/ButtonBase";
 import ArrowIcon from "@mui/icons-material/ArrowForward";
 import ScrollAnimation from "react-scroll-animation-wrapper";
 import Container from "@mui/material/Container";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "lib/useTranslation";
 import imgAPI from "public/images/imgAPI";
 import imgLaptop from "public/images/laptop.jpg";
 import imgMoviles from "public/images/moviles.jpg";

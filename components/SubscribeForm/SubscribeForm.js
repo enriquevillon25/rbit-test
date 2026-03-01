@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import { Parallax } from 'react-parallax';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'lib/useTranslation';
 import imgAPI from 'public/images/imgAPI';
 import { useText } from 'theme/common';
 import useStyles from './subscribe-style';
