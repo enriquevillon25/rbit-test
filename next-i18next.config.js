@@ -6,6 +6,6 @@ module.exports = {
     locales: ["en", "de", "id", "ar", "pt", "zh"],
     fallbackLng: "en",
   },
-  localePath: path.resolve("./public/locales"),
+  localePath: path.resolve("./src/locales"),
   ssg: true, // Set to true for Static Site Generation (SSG)
 };

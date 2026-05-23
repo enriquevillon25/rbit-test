@@ -1,11 +1,11 @@
-# `education-theme`
+# RBIT Web
 
-> TODO: description
+Sitio web estático de RBIT Informática i Telecomunicaciones, construido con Next.js, React y Material UI.
 
 ## Installation
 
 ```
-lerna bootstrap
+npm install
 ```
 
 ## Run Development
