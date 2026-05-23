@@ -3,17 +3,21 @@ import imgComputer from "public/images/computer.jpg";
 import imgiPhones from "public/images/iphones.webp";
 import reparationPhone from "public/images/reparation-phone.png";
 import repairPCImage from "public/images/education/repair-ordenador.webp";
+import { businessInfo } from "seo/businessInfo";
+import { featuredSeoServices, primarySeoServices } from "seo/services";
 
 export type LandingNavItem = "feature" | "explore" | "popular" | "about";
 
 export interface ImageTextItem {
   img: string;
+  imgAlt: string;
   title: string;
   desc: string;
 }
 
 export interface ServiceCta {
   img: string;
+  imgAlt: string;
   title: string;
   href: string;
 }
@@ -44,6 +48,26 @@ export interface FooterSection {
   links: FooterLink[];
 }
 
+function formatBusinessAddress(): string {
+  const { address } = businessInfo;
+
+  return [
+    address.streetAddress,
+    businessInfo.areaServed.includes("Eixample") ? "Eixample" : undefined,
+    address.addressLocality,
+    address.postalCode,
+    address.addressCountry === "ES" ? "España" : address.addressCountry,
+  ]
+    .filter(Boolean)
+    .join(", ");
+}
+
+function buildBusinessMapUrl(): string {
+  const query = encodeURIComponent(formatBusinessAddress());
+
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
+}
+
 export const navItems: LandingNavItem[] = [
   "feature",
   "explore",
@@ -54,40 +78,58 @@ export const navItems: LandingNavItem[] = [
 export const serviceCategories: ImageTextItem[] = [
   {
     img: imgComputer,
-    title: "Reparar ordenadores",
-    desc: "Diagnóstico y reparación de PC sobremesa, fuentes, placas base, discos, memoria y problemas de rendimiento.",
+    imgAlt: primarySeoServices[0].imageAlt,
+    title: primarySeoServices[0].shortTitle,
+    desc: primarySeoServices[0].description,
   },
   {
     img: imgLaptop,
-    title: "Reparar portátiles",
-    desc: "Reparación de portátiles Windows, cambio de pantalla, batería, teclado, bisagras, limpieza interna y mantenimiento.",
+    imgAlt: primarySeoServices[1].imageAlt,
+    title: primarySeoServices[1].shortTitle,
+    desc: primarySeoServices[1].description,
   },
   {
     img: reparationPhone,
-    title: "Reparar moviles",
-    desc: "Servicio técnico para móviles con pantalla rota, batería agotada, conectores dañados o fallos de software.",
+    imgAlt: primarySeoServices[3].imageAlt,
+    title: primarySeoServices[3].shortTitle,
+    desc: primarySeoServices[3].description,
   },
   {
     img: imgiPhones,
+    imgAlt: "Reparación de iPhone en Barcelona",
     title: "Reparar iPhones",
     desc: "Reparación de iPhone, cambio de pantalla, batería, cámara, conector de carga y recuperación de datos.",
   },
   {
     img: reparationPhone,
-    title: "Reparar Macbooks",
-    desc: "Reparación de MacBook, diagnóstico de hardware, reinstalación de macOS, ampliaciones y mantenimiento preventivo.",
+    imgAlt: primarySeoServices[2].imageAlt,
+    title: primarySeoServices[2].shortTitle,
+    desc: primarySeoServices[2].description,
   },
 ];
 
 export const serviceCta: ServiceCta = {
   img: imgLaptop,
+  imgAlt: "Servicio técnico informático en Eixample",
   title: "TODOS NUESTROS SERVICIOS",
   href: "#",
 };
 
-export const featuredServices: FeaturedService[] = [
+export const featuredServices: FeaturedService[] = featuredSeoServices.map(
+  (service, index) => ({
+    img: repairPCImage,
+    imgAlt: service.imageAlt,
+    title: service.title,
+    rating: index === 1 ? 4 : index === 4 ? 5 : index === 3 ? 3 : 5,
+    price: [50, 10, 50, 25, 50, 40][index] || 50,
+    desc: service.description,
+  })
+);
+
+export const legacyFeaturedServices: FeaturedService[] = [
   {
     img: repairPCImage,
+    imgAlt: "Reparación de ordenadores en Barcelona",
     title: "Reparar Ordenadores",
     rating: 5,
     price: 50,
@@ -95,6 +137,7 @@ export const featuredServices: FeaturedService[] = [
   },
   {
     img: repairPCImage,
+    imgAlt: "Reparación de portátiles en Barcelona",
     title: "Reparar Portátiles",
     rating: 4,
     price: 10,
@@ -102,6 +145,7 @@ export const featuredServices: FeaturedService[] = [
   },
   {
     img: repairPCImage,
+    imgAlt: "Reparación de MacBook en Barcelona",
     title: "Reparar Macbook",
     rating: 5,
     price: 50,
@@ -109,6 +153,7 @@ export const featuredServices: FeaturedService[] = [
   },
   {
     img: repairPCImage,
+    imgAlt: "Recuperación de datos en Barcelona",
     title: "Recuperación de datos",
     rating: 3,
     price: 25,
@@ -116,6 +161,7 @@ export const featuredServices: FeaturedService[] = [
   },
   {
     img: repairPCImage,
+    imgAlt: "Mantenimiento informático en Barcelona",
     title: "Mantenimiento informático",
     rating: 5,
     price: 50,
@@ -123,6 +169,7 @@ export const featuredServices: FeaturedService[] = [
   },
   {
     img: repairPCImage,
+    imgAlt: "Servicio técnico informático a domicilio en Barcelona",
     title: "Asistencia a domicilio",
     rating: 5,
     price: 40,
@@ -201,20 +248,20 @@ export const footerSections: FooterSection[] = [
     title: "Empresa",
     links: [
       {
-        label: "Carrer de Bailèn, 109, Local 2, Eixample, 08009 Barcelona, España",
-        href: "https://www.google.com/maps/search/?api=1&query=Carrer%20de%20Bailen%20109%20Barcelona",
+        label: formatBusinessAddress(),
+        href: buildBusinessMapUrl(),
       },
       {
         label: "Lunes a sábado, 10:00-20:00",
         href: "/contact",
       },
       {
-        label: "666266295",
-        href: "tel:+34666266295",
+        label: businessInfo.contact.telephone?.replace("+34", "") || "",
+        href: `tel:${businessInfo.contact.telephone || ""}`,
       },
       {
-        label: "jvillonl@rbitinformatica.com",
-        href: "mailto:jvillonl@rbitinformatica.com",
+        label: businessInfo.contact.email || "",
+        href: `mailto:${businessInfo.contact.email || ""}`,
       },
     ],
   },

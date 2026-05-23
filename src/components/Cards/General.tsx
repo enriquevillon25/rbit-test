@@ -8,6 +8,7 @@ import { handleWhatsApp } from "utils/sends";
 
 interface GeneralProps {
   img: string;
+  imgAlt?: string;
   title: string;
   desc: string;
   rating: number;
@@ -17,11 +18,11 @@ interface GeneralProps {
 export default function General(props: GeneralProps) {
   const { classes } = useStyles();
   const { classes: text } = useText();
-  const { img, title, desc, rating, price } = props;
+  const { img, imgAlt, title, desc, rating, price } = props;
   return (
     <Paper className={classes.generalCard}>
       <figure>
-        <img src={img} alt={title} />
+        <img src={img} alt={imgAlt || title} />
       </figure>
       <div className={classes.desc}>
         <Typography variant="h6" gutterBottom>

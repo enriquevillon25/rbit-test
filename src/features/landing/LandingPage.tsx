@@ -1,8 +1,10 @@
 import React, { Fragment } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { makeStyles } from "tss-react/mui";
+import JsonLd from "components/seo/JsonLd";
 import MainContainer from "components/MainContainer";
 import PageNav from "components/PageNav";
+import { buildLandingJsonLd } from "seo/structuredData";
 import SeoHead from "./seo/SeoHead";
 import SectionRenderer from "./components/SectionRenderer";
 import { landingSections } from "./config/sections";
@@ -35,6 +37,7 @@ function LandingPage(props: LandingPageProps): JSX.Element {
   const { classes } = useStyles();
   const { onToggleDark, onToggleDir } = props;
   const { showPageNav } = useLandingLayout();
+  const jsonLd = buildLandingJsonLd();
 
   const getSectionClass = (
     spacing?: LandingSectionSpacing
@@ -53,6 +56,7 @@ function LandingPage(props: LandingPageProps): JSX.Element {
   return (
     <Fragment>
       <SeoHead />
+      <JsonLd data={jsonLd} />
       <CssBaseline />
       <MainContainer onToggleDark={onToggleDark} onToggleDir={onToggleDir}>
         <Fragment>

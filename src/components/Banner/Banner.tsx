@@ -93,7 +93,7 @@ function Banner() {
                   </div>
                   <img
                     src="/images/education/banner-artwork.png"
-                    alt="Servicio técnico informático en Barcelona"
+                    alt="Servicio técnico informático en Eixample"
                   />
                   <div className={cx(classes.parallaxScene, classes.front)}>
                     <animated.div

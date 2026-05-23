@@ -5,6 +5,8 @@ import PopularCourse from "components/PopularCourse";
 import About from "components/About";
 import Testimonials from "components/Testimonials";
 import Subscribe from "components/SubscribeForm";
+import LocalBusinessSEOContent from "components/seo/LocalBusinessSEOContent";
+import SEOFaqSection from "components/seo/SEOFaqSection";
 import type { LandingSectionConfig } from "../types";
 
 export const landingSections: LandingSectionConfig[] = [
@@ -29,6 +31,14 @@ export const landingSections: LandingSectionConfig[] = [
   {
     id: "about",
     Component: About,
+  },
+  {
+    id: "local-seo",
+    Component: LocalBusinessSEOContent,
+  },
+  {
+    id: "faq",
+    Component: SEOFaqSection,
   },
   {
     id: "testimonials",

@@ -5,6 +5,7 @@ import useStyles from './cards-style';
 
 interface CategoryProps {
   img: string;
+  imgAlt?: string;
   desc: string;
   title: string;
 }
@@ -13,6 +14,7 @@ function Category(props: CategoryProps) {
   const { classes } = useStyles();
   const {
     img,
+    imgAlt,
     title,
     desc
   } = props;
@@ -32,7 +34,7 @@ function Category(props: CategoryProps) {
           </Typography>
         </span>
         <span className={classes.figure}>
-          <img src={img} alt="img" />
+          <img src={img} alt={imgAlt || title} />
         </span>
       </ButtonBase>
     </div>

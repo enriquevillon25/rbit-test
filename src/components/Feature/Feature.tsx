@@ -40,7 +40,7 @@ function Feature() {
                   <figure>
                     <img
                       src="/images/education/customatetion.svg"
-                      alt="presenter"
+                      alt="Servicio técnico informático en Barcelona"
                     />
                   </figure>
                   <div className={classes.text}>
@@ -59,7 +59,10 @@ function Feature() {
               <Grid sm={4} xs={12} item>
                 <div className={classes.counterItem}>
                   <figure>
-                    <img src="/images/education/software.svg" alt="hd-video" />
+                    <img
+                      src="/images/education/software.svg"
+                      alt="Eliminación de virus e instalación de Windows"
+                    />
                   </figure>
                   <div className={classes.text}>
                     <Typography
@@ -74,7 +77,10 @@ function Feature() {
               <Grid sm={4} xs={12} item>
                 <div className={classes.counterItem}>
                   <figure>
-                    <img src="/images/education/build.svg" alt="money" />
+                    <img
+                      src="/images/education/build.svg"
+                      alt="Reparación de PC y portátiles en Barcelona"
+                    />
                   </figure>
                   <div className={classes.text}>
                     <Typography

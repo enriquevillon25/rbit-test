@@ -49,6 +49,7 @@ function Explore() {
                     <div>
                       <CategoryCard
                         img={item.img}
+                        imgAlt={item.imgAlt}
                         title={item.title}
                         desc={item.desc}
                       />
@@ -72,7 +73,7 @@ function Explore() {
                       href={serviceCta.href}
                     >
                       <span className={classes.figure}>
-                        <img src={serviceCta.img} alt="Servicio técnico" />
+                        <img src={serviceCta.img} alt={serviceCta.imgAlt} />
                       </span>
                       <span className={classes.property}>
                         <span className={classes.title}>

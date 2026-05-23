@@ -30,13 +30,22 @@ function About() {
               <Fragment>
                 <div className={cx(classes.illustration, classes.one)} />
                 <figure className={cx(classes.illustration, classes.two)}>
-                  <img src={imagetest3} alt="about" />
+                  <img
+                    src={imagetest3}
+                    alt="Recuperación de datos en Barcelona"
+                  />
                 </figure>
                 <figure className={cx(classes.illustration, classes.three)}>
-                  <img src={imagetest2} alt="about" />
+                  <img
+                    src={imagetest2}
+                    alt="Instalación de SSD en portátil"
+                  />
                 </figure>
                 <figure className={cx(classes.illustration, classes.four)}>
-                  <img src={imagetest} alt="about" />
+                  <img
+                    src={imagetest}
+                    alt="Reparación de portátiles en Barcelona"
+                  />
                 </figure>
                 <div className={cx(classes.illustration, classes.five)} />
               </Fragment>

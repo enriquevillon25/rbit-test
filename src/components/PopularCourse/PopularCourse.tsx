@@ -78,6 +78,7 @@ function PopularCourse() {
               <div key={index.toString()} className={classes.item}>
                 <GeneralCard
                   img={item.img}
+                  imgAlt={item.imgAlt}
                   title={item.title}
                   desc={item.desc}
                   rating={item.rating}
