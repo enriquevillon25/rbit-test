@@ -3,12 +3,13 @@ import { useTheme } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import { useSpring, animated } from "react-spring";
-import { useTranslation } from "lib/useTranslation";
 import useClientMediaQuery from "lib/useClientMediaQuery";
 import { useText } from "theme/common";
 import useStyles from "./banner-style";
-import { Button } from "@mui/material";
+import { homeHero } from "features/landing/config/homeContent";
 import { handleWhatsApp } from "utils/sends";
 
 type PointerPosition = [number, number];
@@ -28,9 +29,6 @@ function Banner() {
   const { classes: text } = useText();
   const isDesktop = useClientMediaQuery(theme.breakpoints.up("lg"));
   const isTablet = useClientMediaQuery(theme.breakpoints.up("sm"));
-
-  // Translation function
-  const { t } = useTranslation("common");
 
   const { classes, cx } = useStyles() as any;
 
@@ -55,27 +53,27 @@ function Banner() {
             <div className={classes.bannerText}>
               <div className={classes.title}>
                 <Typography component="h1" variant="h3" className={text.title}>
-                  {t("education-landing.banner_title")}
+                  {homeHero.title}
                 </Typography>
               </div>
               <Typography className={classes.subtitle} variant="h5">
-                {t("education-landing.banner_desc")}
+                {homeHero.subtitle}
               </Typography>
-              <div>
+              <Box className={classes.ctaGroup}>
                 <Button
-                  color="secondary"
-                  variant="outlined"
-                  // className={classes.button}
+                  color="primary"
+                  variant="contained"
                   onClick={handleWhatsApp}
-                  sx={{
-                    zIndex: 10,
-                    backgroundColor: "common.white",
-                    color: "common.black",
-                  }}
                 >
-                  Diagnostico gratuito
+                  {homeHero.primaryCta}
                 </Button>
-              </div>
+                <Button color="primary" variant="outlined" href="#services">
+                  {homeHero.secondaryCta}
+                </Button>
+              </Box>
+              <Typography className={classes.location} component="p">
+                {homeHero.location}
+              </Typography>
             </div>
           </Grid>
           {isTablet && (

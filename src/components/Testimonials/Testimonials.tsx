@@ -1,20 +1,18 @@
 import React, { useRef } from "react";
 import Carousel from "react-slick";
 import IconButton from "@mui/material/IconButton";
-import { useTranslation } from "lib/useTranslation";
 import { testimonials } from "data/siteContent";
 import Title from "../Title";
 import TestiCard from "../Cards/Testimonial";
 import useStyle from "./testi-style";
 
 function Testimonials() {
-  const { t } = useTranslation("common");
-
   const slider = useRef(null);
   const { classes, cx } = useStyle() as any;
+  const visibleTestimonials = testimonials.slice(0, 6);
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     autoplay: true,
     autoplaySpeed: 7000,
@@ -34,15 +32,15 @@ function Testimonials() {
   return (
     <div className={classes.root}>
       <Title
-        head={t("education-landing.testimonials_title")}
-        desc={t("education-landing.testimonials_desc")}
+        head="Clientes que confían en RBIT"
+        desc="Opiniones de clientes sobre reparación informática en Barcelona."
         align="center"
         color="primary"
       />
       <div className={classes.sliderWrap}>
         <div className={classes.carousel}>
           <Carousel ref={slider} {...settings}>
-            {testimonials.map((item, index) => (
+            {visibleTestimonials.map((item, index) => (
               <div key={index.toString()} className={classes.item}>
                 <TestiCard
                   text={item.text}

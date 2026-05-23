@@ -88,6 +88,20 @@ const useStyles = makeStyles({ uniqId: 'banner' })((theme, _params, classes) => 
       fontSize: 20
     }
   },
+  ctaGroup: {
+    display: 'flex',
+    gap: theme.spacing(2),
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    [theme.breakpoints.down('md')]: {
+      justifyContent: 'center',
+    },
+  },
+  location: {
+    marginTop: theme.spacing(2),
+    color: theme.palette.text.secondary,
+    fontWeight: theme.typography.fontWeightMedium,
+  },
   decoGrid: {
     position: 'static'
   },

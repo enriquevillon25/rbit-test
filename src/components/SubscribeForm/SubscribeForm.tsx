@@ -1,23 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import TextField from "@mui/material/TextField";
 import { Parallax } from "react-parallax";
 import { useTranslation } from "lib/useTranslation";
 import { useText } from "theme/common";
+import { handleWhatsApp } from "utils/sends";
 import useStyles from "./subscribe-style";
 import imgAPI from "public/images/imgApi";
+
 function SubscribeForm() {
   const { classes } = useStyles();
   const { classes: text } = useText();
   const { t } = useTranslation("common");
-  const [value, setValue] = useState("");
-
-  function handleChange(event) {
-    setValue(event.target.value);
-  }
 
   return (
     <div className={classes.root}>
@@ -34,24 +30,17 @@ function SubscribeForm() {
           <Typography variant="h4" className={text.title2}>
             {t("education-landing.subscribe_title")}
           </Typography>
-          <Typography className={text.subtitle2}>
+          <Typography className={text.paragraph}>
             {t("education-landing.subscribe_subtitle")}
           </Typography>
-          <form>
-            <TextField
-              className={classes.field}
-              fullWidth
-              variant="filled"
-              label={t("education-landing.subscribe_input")}
-              placeholder={t("education-landing.subscribe_input")}
-              onChange={(e) => handleChange(e)}
-              value={value}
-            />
-            <Button variant="contained" size="large" color="primary">
-              {/* {t('education-landing.subscribe_subscribe')} */}
-              ENVIAR
-            </Button>
-          </form>
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+            onClick={handleWhatsApp}
+          >
+            Contactar por WhatsApp
+          </Button>
         </Paper>
       </Container>
     </div>
