@@ -8,7 +8,7 @@ import { Parallax } from "react-parallax";
 import { useTranslation } from "lib/useTranslation";
 import { useText } from "theme/common";
 import useStyles from "./subscribe-style";
-import imgAPI from "../../../public/images/imgAPI";
+import imgAPI from "public/images/imgApi";
 function SubscribeForm() {
   const { classes } = useStyles();
   const { classes: text } = useText();
