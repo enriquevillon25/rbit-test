@@ -1,14 +1,19 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
 import QuoteIcon from "@mui/icons-material/FormatQuote";
 import Rating from "@mui/material/Rating";
 import useStyles from "./cards-style";
 
-export default function Testimonial(props) {
+interface TestimonialProps {
+  name: string;
+  rating: number | string;
+  text: string;
+}
+
+export default function Testimonial(props: TestimonialProps) {
   const { classes } = useStyles();
   const { name, rating, text } = props;
-  const normalizeRating = (value) => {
+  const normalizeRating = (value: number): number => {
     if (!value) return 0;
 
     const decimal = value % 1;
@@ -42,9 +47,3 @@ export default function Testimonial(props) {
     </div>
   );
 }
-
-Testimonial.propTypes = {
-  name: PropTypes.string.isRequired,
-  rating: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  text: PropTypes.string.isRequired,
-};

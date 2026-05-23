@@ -1,10 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import useStyles from './cards-style';
 
-function Category(props) {
+interface CategoryProps {
+  img: string;
+  desc: string;
+  title: string;
+}
+
+function Category(props: CategoryProps) {
   const { classes } = useStyles();
   const {
     img,
@@ -33,11 +38,5 @@ function Category(props) {
     </div>
   );
 }
-
-Category.propTypes = {
-  img: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
 
 export default Category;

@@ -3,7 +3,7 @@ import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
 import useStyles from './parallax-style';
 
 export default function ParallaxCross() {
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles() as any;
   return (
     <div className={cx(classes.parallaxWrap, classes.crossWrap)}>
       <ParallaxProvider>

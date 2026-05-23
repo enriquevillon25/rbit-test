@@ -11,11 +11,16 @@ import useStyles from "./banner-style";
 import { Button } from "@mui/material";
 import { handleWhatsApp } from "utils/sends";
 
-const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
-const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`;
-const trans2 = (x, y) => `translate3d(${x / 8 + 35}px,${y / 8 - 230}px,0)`;
-const trans3 = (x, y) => `translate3d(${x / 6 - 250}px,${y / 6 - 200}px,0)`;
-const trans4 = (x, y) => `translate3d(${x / 4 + 35}px,${y / 4 - 230}px,0)`;
+type PointerPosition = [number, number];
+
+const calc = (x: number, y: number): PointerPosition => [
+  x - window.innerWidth / 2,
+  y - window.innerHeight / 2,
+];
+const trans1 = (x: number, y: number) => `translate3d(${x / 10}px,${y / 10}px,0)`;
+const trans2 = (x: number, y: number) => `translate3d(${x / 8 + 35}px,${y / 8 - 230}px,0)`;
+const trans3 = (x: number, y: number) => `translate3d(${x / 6 - 250}px,${y / 6 - 200}px,0)`;
+const trans4 = (x: number, y: number) => `translate3d(${x / 4 + 35}px,${y / 4 - 230}px,0)`;
 
 function Banner() {
   // Theme breakpoints
@@ -27,7 +32,7 @@ function Banner() {
   // Translation function
   const { t } = useTranslation("common");
 
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles() as any;
 
   useEffect(() => {
   }, []);
@@ -76,12 +81,12 @@ function Banner() {
                   <div className={classes.oval} />
                   <div className={cx(classes.parallaxScene, classes.back)}>
                     <animated.div
-                      style={{ transform: position.xy.interpolate(trans1) }}
+                      style={{ transform: (position.xy as any).interpolate(trans1) }}
                     >
                       <span className={classes.iconThree} />
                     </animated.div>
                     <animated.div
-                      style={{ transform: position.xy.interpolate(trans2) }}
+                      style={{ transform: (position.xy as any).interpolate(trans2) }}
                     >
                       <span className={classes.iconTwo} />
                     </animated.div>
@@ -92,12 +97,12 @@ function Banner() {
                   />
                   <div className={cx(classes.parallaxScene, classes.front)}>
                     <animated.div
-                      style={{ transform: position.xy.interpolate(trans3) }}
+                      style={{ transform: (position.xy as any).interpolate(trans3) }}
                     >
                       <span className={classes.iconFour} />
                     </animated.div>
                     <animated.div
-                      style={{ transform: position.xy.interpolate(trans4) }}
+                      style={{ transform: (position.xy as any).interpolate(trans4) }}
                     >
                       <span className={classes.iconOne} />
                     </animated.div>

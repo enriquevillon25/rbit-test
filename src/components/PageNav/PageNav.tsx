@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
 import Fab from '@mui/material/Fab';
 import ArrowIcon from '@mui/icons-material/ArrowUpward';
@@ -16,9 +15,34 @@ function createData(id, name, url) {
   };
 }
 
-const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
-  return <AnchorLink to={props.to} {...props} />; // eslint-disable-line
-});
+interface SmoothAnchorProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  offset?: number;
+}
+
+const SmoothAnchor = React.forwardRef<HTMLAnchorElement, SmoothAnchorProps>(
+  function SmoothAnchor(props, ref) {
+    const { offset = 0, onClick, href, ...rest } = props;
+
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+      if (href?.startsWith('#')) {
+        const target = document.getElementById(href.slice(1));
+
+        if (target) {
+          event.preventDefault();
+          const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
+          window.scroll({
+            top: offsetTop - offset,
+            behavior: 'smooth',
+          });
+        }
+      }
+
+      onClick?.(event);
+    };
+
+    return <a ref={ref} href={href} onClick={handleClick} {...rest} />;
+  }
+);
 
 function PageNav() {
   const { t } = useTranslation('common');
@@ -37,7 +61,7 @@ function PageNav() {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
   }, []);
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles() as any;
   const [menuList] = useState(
     navMenu.map((item, index) =>
       createData(index + 1, item, '#' + item.replace(/ /g, '_'))
@@ -64,7 +88,7 @@ function PageNav() {
                 }}
               >
                 <span>
-                  <LinkBtn href={item.url} />
+                  <SmoothAnchor href={item.url} />
                 </span>    
               </Tooltip>
             </li>
@@ -82,7 +106,7 @@ function PageNav() {
           <Fab
             color="secondary"
             aria-label="To top"
-            component={LinkBtn}
+            component={SmoothAnchor}
             href="#home"
             className={classes.fab}
           >

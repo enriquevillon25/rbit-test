@@ -11,7 +11,7 @@ function Testimonials() {
   const { t } = useTranslation("common");
 
   const slider = useRef(null);
-  const { classes, cx } = useStyle();
+  const { classes, cx } = useStyle() as any;
   const settings = {
     dots: false,
     infinite: true,

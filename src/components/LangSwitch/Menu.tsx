@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'lib/useTranslation';
 import CheckIcon from '@mui/icons-material/Check';
 import ListItem from '@mui/material/ListItem';
@@ -10,17 +9,25 @@ import { useRouter } from 'next/router';
 import i18nextConfig from 'next-i18next.config';
 import languageDetector from 'lib/languageDetector';
 
+interface LanguageSwitchProps {
+  locale: string;
+  checked: boolean;
+  toggleDir: (direction: string) => void;
+  closePopup: () => void;
+  ssg?: boolean;
+}
+
 const LanguageSwitch = ({
   locale,
   checked,
   toggleDir,
   ssg,
   closePopup,
-}) => {
+}: LanguageSwitchProps) => {
   const router = useRouter();
   const { t } = useTranslation('common');
 
-  const changeLang = lang => {
+  const changeLang = (lang: string) => {
     languageDetector.cache(lang);
     closePopup();
 
@@ -32,7 +39,7 @@ const LanguageSwitch = ({
           pName = pName.replace(`[${k}]`, lang);
           return;
         }
-        pName = pName.replace(`[${k}]`, router.query[k]);
+        pName = pName.replace(`[${k}]`, String(router.query[k]));
       });
       if (lang) {
         href = pName;
@@ -85,14 +92,6 @@ const LanguageSwitch = ({
       )}
     </ListItem>
   );
-};
-
-LanguageSwitch.propTypes = {
-  locale: PropTypes.string.isRequired,
-  checked: PropTypes.bool.isRequired,
-  toggleDir: PropTypes.func.isRequired,
-  closePopup: PropTypes.func.isRequired,
-  ssg: PropTypes.bool,
 };
 
 LanguageSwitch.defaultProps = {

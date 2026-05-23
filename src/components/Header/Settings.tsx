@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'lib/useTranslation';
 import Popover from '@mui/material/Popover';
 import IconButton from '@mui/material/IconButton';
@@ -20,16 +19,22 @@ if (typeof Storage !== 'undefined') {
   themeType = localStorage.getItem('luxiTheme') || 'light';
 }
 
-function Settings(props) {
-  const [ctn, setCtn] = useState(null);
-  const { classes, cx } = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
+interface SettingsProps {
+  toggleDark: () => void;
+  toggleDir: (direction: string) => void;
+  invert?: boolean;
+}
+
+function Settings(props: SettingsProps) {
+  const [ctn, setCtn] = useState<HTMLElement | null>(null);
+  const { classes, cx } = useStyles() as any;
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [isDark, setDark] = useState(themeType === 'dark');
   const { t, i18n } = useTranslation('common');
 
   const currentLocale = i18n.language;
 
-  function handleClick(event) {
+  function handleClick(event: React.MouseEvent<HTMLElement>) {
     setAnchorEl(event.currentTarget);
   }
 
@@ -135,12 +140,6 @@ function Settings(props) {
     </div>
   );
 }
-
-Settings.propTypes = {
-  toggleDark: PropTypes.func.isRequired,
-  toggleDir: PropTypes.func.isRequired,
-  invert: PropTypes.bool,
-};
 
 Settings.defaultProps = {
   invert: false

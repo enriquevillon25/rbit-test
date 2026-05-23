@@ -5,7 +5,6 @@ import PopularCourse from "components/PopularCourse";
 import About from "components/About";
 import Testimonials from "components/Testimonials";
 import Subscribe from "components/SubscribeForm";
-import SeoServiceContent from "../sections/SeoServiceContent";
 import type { LandingSectionConfig } from "../types";
 
 export const landingSections: LandingSectionConfig[] = [
@@ -35,11 +34,6 @@ export const landingSections: LandingSectionConfig[] = [
     id: "testimonials",
     Component: Testimonials,
     spacing: "top",
-  },
-  {
-    id: "seo-services",
-    Component: SeoServiceContent,
-    spacing: "topShort",
   },
   {
     id: "subscribe",

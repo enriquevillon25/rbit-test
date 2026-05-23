@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
@@ -14,8 +13,14 @@ import { useText } from 'theme/common';
 import Link from '../Link';
 import useStyles from './form-style';
 
-function AuthFrame(props) {
-  const { classes, cx } = useStyles();
+interface AuthFrameProps {
+  children: ReactNode;
+  title: string;
+  subtitle?: string;
+}
+
+function AuthFrame(props: AuthFrameProps) {
+  const { classes, cx } = useStyles() as any;
   const { classes: text } = useText();
   const { children, title, subtitle } = props;
 
@@ -39,7 +44,7 @@ function AuthFrame(props) {
         <Paper className={classes.formBox}>
           <IconButton
             href={routerLink.education.home}
-            component={Link}
+            component={Link as any}
             className={classes.backtohome}
             size="large"
           >
@@ -85,12 +90,6 @@ function AuthFrame(props) {
     </div>
   );
 }
-
-AuthFrame.propTypes = {
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
-};
 
 AuthFrame.defaultProps = {
   subtitle: '',

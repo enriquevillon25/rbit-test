@@ -1,14 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import StarIcon from "@mui/icons-material/Star";
 import { useText } from "theme/common";
 import useStyles from "./cards-style";
 import { handleWhatsApp } from "utils/sends";
 
-export default function General(props) {
+interface GeneralProps {
+  img: string;
+  title: string;
+  desc: string;
+  rating: number;
+  price: number;
+}
+
+export default function General(props: GeneralProps) {
   const { classes } = useStyles();
   const { classes: text } = useText();
   const { img, title, desc, rating, price } = props;
@@ -45,11 +51,3 @@ export default function General(props) {
     </Paper>
   );
 }
-
-General.propTypes = {
-  img: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-};

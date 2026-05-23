@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import type { SelectChangeEvent } from '@mui/material/Select';
 import LangIcon from '@mui/icons-material/Language';
 import InputAdornment from '@mui/material/InputAdornment';
 import SelectMUI from '@mui/material/Select';
@@ -11,9 +11,13 @@ import useStyles from '../Footer/footer-style';
 import languageDetector from 'lib/languageDetector';
 import i18nextConfig from 'next-i18next.config';
 
-function SelectLang(props) {
-  const [ctn, setCtn] = useState(null);
-  const { classes } = useStyles();
+interface SelectLangProps {
+  toggleDir?: (direction: string) => void;
+}
+
+function SelectLang(props: SelectLangProps) {
+  const [ctn, setCtn] = useState<HTMLElement | null>(null);
+  const { classes } = useStyles() as any;
 
   // Translation Function
   const router = useRouter();
@@ -26,7 +30,7 @@ function SelectLang(props) {
     setCtn(document.getElementById('main-wrap'));
   }, []);
 
-  function handleChange(event) {
+  function handleChange(event: SelectChangeEvent<string>) {
     const lang = event.target.value;
 
     setValues(oldValues => ({
@@ -42,7 +46,7 @@ function SelectLang(props) {
           pName = pName.replace(`[${k}]`, lang);
           return;
         }
-        pName = pName.replace(`[${k}]`, router.query[k]);
+        pName = pName.replace(`[${k}]`, String(router.query[k]));
       });
       if (lang) {
         href = pName;
@@ -83,10 +87,6 @@ function SelectLang(props) {
     </SelectMUI>
   );
 }
-
-SelectLang.propTypes = {
-  toggleDir: PropTypes.func,
-};
 
 SelectLang.defaultProps = {
   toggleDir: () => {},

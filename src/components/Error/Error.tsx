@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -9,7 +8,12 @@ import routeLink from 'data/text/link';
 import Link from '../Link';
 import useStyles from './error-style';
 
-function Error(props) {
+interface ErrorProps {
+  errCode?: string;
+  text?: string;
+}
+
+function Error(props: ErrorProps) {
   const { classes } = useStyles();
   const { errCode, text } = props;
   const { t } = useTranslation('common');
@@ -33,7 +37,7 @@ function Error(props) {
               <Typography>
                 {t('404_subtitle')}
               </Typography>
-              <Button component={Link} variant="contained" color="primary" size="large" href={routeLink.education.home} className={classes.button}>
+              <Button component={Link as any} variant="contained" color="primary" size="large" href={routeLink.education.home} className={classes.button}>
                 {t('back')}
               </Button>
             </div>
@@ -43,11 +47,6 @@ function Error(props) {
     </div>
   );
 }
-
-Error.propTypes = {
-  errCode: PropTypes.string,
-  text: PropTypes.string,
-};
 
 Error.defaultProps = {
   errCode: '404',

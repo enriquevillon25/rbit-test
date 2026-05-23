@@ -24,7 +24,7 @@ function Copyright() {
 }
 
 function Footer() {
-  const { classes } = useStyles();
+  const { classes } = useStyles() as any;
   const theme = useTheme();
   const isDesktop = useClientMediaQuery(theme.breakpoints.up("md"));
   const isTablet = useClientMediaQuery(theme.breakpoints.down("lg"));

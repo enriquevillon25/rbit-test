@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import type { ReactNode } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import Header from '../Header';
 import Footer from '../Footer/Footer';
 
-const sectionMargin = margin => (margin * 20);
 const useStyles = makeStyles({ uniqId: 'main_container' })(theme => ({
   mainWrap: {
     position: 'relative',
@@ -14,7 +13,14 @@ const useStyles = makeStyles({ uniqId: 'main_container' })(theme => ({
   },
 }));
 
-function MainContainer(props) {
+interface MainContainerProps {
+  onToggleDark: () => void;
+  onToggleDir: () => void;
+  children: ReactNode;
+  invert?: boolean;
+}
+
+function MainContainer(props: MainContainerProps) {
   const { classes } = useStyles();
   const {
     onToggleDark, onToggleDir, 
@@ -35,13 +41,6 @@ function MainContainer(props) {
     </Fragment>
   );
 }
-
-MainContainer.propTypes = {
-  onToggleDark: PropTypes.func.isRequired,
-  onToggleDir: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  invert: PropTypes.bool,
-};
 
 MainContainer.defaultProps = {
   invert: false,

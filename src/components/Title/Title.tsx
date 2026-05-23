@@ -1,17 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import { useText } from 'theme/common';
 import useStyles from './title-style';
 
-export default function Title(props) {
+type TitleAlign = 'left' | 'right' | 'center';
+type TitleColor = 'primary' | 'secondary';
+
+interface TitleProps {
+  align?: TitleAlign;
+  head: string;
+  desc?: string;
+  color?: TitleColor;
+  dark?: boolean;
+}
+
+export default function Title(props: TitleProps) {
   const { classes, cx } = useStyles();
   const { classes: text } = useText();
   const {
     align, head, desc,
     color, dark
   } = props;
-  const setAlign = alignment => {
+  const setAlign = (alignment?: TitleAlign) => {
     switch (alignment) {
       case 'left':
         return classes.left;
@@ -23,7 +33,7 @@ export default function Title(props) {
         return classes.left;
     }
   };
-  const setColor = clr => {
+  const setColor = (clr?: TitleColor) => {
     if (clr === 'secondary') {
       return classes.secondary;
     }
@@ -42,14 +52,6 @@ export default function Title(props) {
     </div>
   );
 }
-
-Title.propTypes = {
-  align: PropTypes.string,
-  head: PropTypes.string.isRequired,
-  desc: PropTypes.string,
-  color: PropTypes.string,
-  dark: PropTypes.bool,
-};
 
 Title.defaultProps = {
   align: 'left',

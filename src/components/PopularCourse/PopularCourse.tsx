@@ -19,7 +19,7 @@ function PopularCourse() {
   const isDesktop = useClientMediaQuery(theme.breakpoints.up('md'));
   const isMobile = useClientMediaQuery(theme.breakpoints.down('sm'));
 
-  const { classes, cx } = useStyle();
+  const { classes, cx } = useStyle() as any;
 
   const settings = {
     dots: false,

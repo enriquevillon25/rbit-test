@@ -14,7 +14,7 @@ const subscribeStyles = makeStyles({ uniqId: 'subscribe' })(theme => ({
     maxWidth: 700,
     margin: '0 auto',
     marginTop: theme.spacing(-45),
-    width: '100%',
+    width: "100%",
     display: 'block',
     // color: theme.palette.text.secondary,
     position: 'relative',

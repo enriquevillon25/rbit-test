@@ -1,11 +1,9 @@
 import React, { useState, useEffect, Fragment } from "react";
-import PropTypes from "prop-types";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import Scrollspy from "react-scrollspy";
 import { useTranslation } from "lib/useTranslation";
 import useClientMediaQuery, { useIsMounted } from "lib/useClientMediaQuery";
@@ -17,7 +15,25 @@ import Link from "../Link";
 import navMenu from "./menu";
 
 let counter = 0;
-function createData(name, url, offset) {
+
+interface HeaderProps {
+  onToggleDark: () => void;
+  onToggleDir: () => void;
+  invert?: boolean;
+}
+
+interface HeaderMenuItem {
+  id: number;
+  name: string;
+  url: string;
+  offset: number;
+}
+
+interface SmoothAnchorProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  offset?: number;
+}
+
+function createData(name: string, url: string, offset: number): HeaderMenuItem {
   counter += 1;
   return {
     id: counter,
@@ -27,12 +43,32 @@ function createData(name, url, offset) {
   };
 }
 
-const LinkBtn = React.forwardRef(function LinkBtn(props, ref) {
-  // eslint-disable-line
-  return <AnchorLink to={props.to} {...props} />; // eslint-disable-line
-});
+const SmoothAnchor = React.forwardRef<HTMLAnchorElement, SmoothAnchorProps>(
+  function SmoothAnchor(props, ref) {
+    const { offset = 0, onClick, href, ...rest } = props;
 
-function Header(props) {
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+      if (href?.startsWith("#")) {
+        const target = document.getElementById(href.slice(1));
+
+        if (target) {
+          event.preventDefault();
+          const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
+          window.scroll({
+            top: offsetTop - offset,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      onClick?.(event);
+    };
+
+    return <a ref={ref} href={href} onClick={handleClick} {...rest} />;
+  }
+);
+
+function Header(props: HeaderProps) {
   // Theme breakpoints
   const theme = useTheme();
   const isTablet = useClientMediaQuery(theme.breakpoints.down("lg"));
@@ -53,7 +89,7 @@ function Header(props) {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   }, []);
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles() as any;
   const { invert } = props;
   const { t } = useTranslation("common");
 
@@ -101,9 +137,9 @@ function Header(props) {
                     <img src={logo} alt="logo" />
                   </Link>
                 ) : (
-                  <AnchorLink href="#home">
+                  <SmoothAnchor href="#home">
                     <img src={logo} alt="logo" />
-                  </AnchorLink>
+                  </SmoothAnchor>
                 )}
               </div>
             </nav>
@@ -114,7 +150,7 @@ function Header(props) {
                     <li key={item.id.toString()}>
                       {invert ? (
                         // eslint-disable-next-line
-                        <Button component={Link} href={"/" + item.url}>
+                        <Button component={Link as any} href={"/" + item.url}>
                           <span className={classes.text}>
                             {t("education-landing.header_" + item.name)}
                           </span>
@@ -122,7 +158,7 @@ function Header(props) {
                       ) : (
                         // eslint-disable-next-line
                         <Button
-                          component={LinkBtn}
+                          component={SmoothAnchor as any}
                           offset={item.offset || 0}
                           href={item.url}
                         >
@@ -134,7 +170,7 @@ function Header(props) {
                     </li>
                   ))}
                   <li>
-                    <Button component={Link} href={routeLink.education.contact}>
+                    <Button component={Link as any} href={routeLink.education.contact}>
                       <span className={classes.text}>
                         {t("education-landing.header_contact")}
                       </span>
@@ -176,12 +212,6 @@ function Header(props) {
     </Fragment>
   );
 }
-
-Header.propTypes = {
-  onToggleDark: PropTypes.func.isRequired,
-  onToggleDir: PropTypes.func.isRequired,
-  invert: PropTypes.bool,
-};
 
 Header.defaultProps = {
   invert: false,

@@ -6,8 +6,10 @@ import { ValidatorComponent } from 'react-material-ui-form-validator';
 
 const red300 = red['500'];
 
-class CheckboxValidatorElement extends ValidatorComponent {
-  renderValidatorComponent() {
+const BaseValidatorComponent = ValidatorComponent as React.ComponentClass<any>;
+
+class CheckboxValidatorElement extends BaseValidatorComponent {
+  renderValidatorComponent(): JSX.Element {
     const {
       classes,
       errorMessages,
@@ -15,21 +17,21 @@ class CheckboxValidatorElement extends ValidatorComponent {
       requiredError,
       value,
       ...rest
-    } = this.props;
+    } = (this as any).props;
 
     return (
       <div>
         <Checkbox
           {...rest}
-          ref={(r) => { this.input = r; }}
+          ref={(r) => { (this as any).input = r; }}
         />
         {this.errorText()}
       </div>
     );
   }
 
-  errorText() {
-    const { isValid } = this.state;
+  errorText(): JSX.Element | null {
+    const { isValid } = (this as any).state;
 
     if (isValid) {
       return null;
@@ -45,7 +47,7 @@ class CheckboxValidatorElement extends ValidatorComponent {
           mt: 1,
         }}
       >
-        {this.getErrorMessage()}
+        {(this as any).getErrorMessage()}
       </Box>
     );
   }

@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import TextField from '@mui/material/TextField';
-import { Parallax } from 'react-parallax';
-import { useTranslation } from 'lib/useTranslation';
-import bgImage from 'public/images/macbooks.jpeg';
-import { useText } from 'theme/common';
-import useStyles from './subscribe-style';
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import { Parallax } from "react-parallax";
+import { useTranslation } from "lib/useTranslation";
+import bgImage from "public/images/macbooks.jpeg";
+import { useText } from "theme/common";
+import useStyles from "./subscribe-style";
 
 function SubscribeForm() {
   const { classes } = useStyles();
   const { classes: text } = useText();
-  const { t } = useTranslation('common');
-  const [value, setValue] = useState('');
+  const { t } = useTranslation("common");
+  const [value, setValue] = useState("");
 
-  function handleChange(event) {
+  function handleChange(
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     setValue(event.target.value);
   }
 
@@ -33,23 +35,22 @@ function SubscribeForm() {
       <Container fixed>
         <Paper className={classes.form}>
           <Typography variant="h4" className={text.title2}>
-            {t('education-landing.subscribe_title')}
+            {t("education-landing.subscribe_title")}
           </Typography>
           <Typography className={text.subtitle2}>
-            {t('education-landing.subscribe_subtitle')}
+            {t("education-landing.subscribe_subtitle")}
           </Typography>
           <form>
             <TextField
               className={classes.field}
               fullWidth
               variant="filled"
-              label={t('education-landing.subscribe_input')}
-              placeholder={t('education-landing.subscribe_input')}
+              label={t("education-landing.subscribe_input")}
+              placeholder={t("education-landing.subscribe_input")}
               onChange={(e) => handleChange(e)}
               value={value}
             />
             <Button variant="contained" size="large" color="primary">
-              {/* {t('education-landing.subscribe_subscribe')} */}
               ENVIAR
             </Button>
           </form>

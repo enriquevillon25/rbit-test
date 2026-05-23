@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
@@ -10,8 +9,13 @@ import routeLink from 'data/text/link';
 import useStyles from './header-style';
 import navMenu from './menu';
 
-function MobileMenu(props) {
-  const { classes, cx } = useStyles();
+interface MobileMenuProps {
+  open: boolean;
+  toggleDrawer: () => void;
+}
+
+function MobileMenu(props: MobileMenuProps) {
+  const { classes, cx } = useStyles() as any;
   const { toggleDrawer, open } = props;
   const { t, i18n } = useTranslation('common');
   const curLang = '/' + i18n.language;
@@ -74,10 +78,5 @@ function MobileMenu(props) {
     </SwipeableDrawer>
   );
 }
-
-MobileMenu.propTypes = {
-  toggleDrawer: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-};
 
 export default MobileMenu;

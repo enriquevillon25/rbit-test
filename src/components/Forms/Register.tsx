@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import Icon from '@mui/material/Icon';
 import Button from '@mui/material/Button';
+import Icon from '@mui/material/Icon';
 import Typography from '@mui/material/Typography';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useTranslation } from 'lib/useTranslation';
 import routeLink from 'data/text/link';
 import { useText } from 'theme/common';
 import SocialAuth from './SocialAuth';
-import Link from '../Link';
 import Title from '../Title';
+import Link from '../Link';
+import Checkbox from './Checkbox';
 import AuthFrame from './AuthFrame';
 import useStyles from './form-style';
 
-function Login() {
-  const { classes, cx } = useStyles();
+function Register() {
+  const { classes, cx } = useStyles() as any;
   const { classes: text } = useText();
 
   const { t } = useTranslation('common');
 
   const [values, setValues] = useState({
+    name: '',
     email: '',
     password: '',
+    confirmPassword: '',
   });
 
   useEffect(() => {
@@ -33,6 +35,7 @@ function Login() {
       }
       return true;
     });
+    ValidatorForm.addValidationRule('isTruthy', value => value);
   });
 
   const [check, setCheck] = useState(false);
@@ -49,25 +52,23 @@ function Login() {
   };
 
   return (
-    <AuthFrame title={t('login_title')} subtitle={t('login_subtitle')}>
+    <AuthFrame title={t('register_title')} subtitle={t('register_subtitle')}>
       <div>
         <div className={classes.head}>
           <Title
-            head={t('login')}
+            head={t('register')}
             desc=""
             align="left"
             color="secondary"
           />
-          <Button component={Link} size="small" className={classes.buttonLink} href={routeLink.education.register}>
+          <Button component={Link} size="small" className={classes.buttonLink} href={routeLink.education.login}>
             <Icon className={cx(classes.icon, classes.signArrow)}>arrow_forward</Icon>
-            {t('login_create')}
+            {t('register_already')}
           </Button>
         </div>
         <SocialAuth />
         <div className={classes.separator}>
-          <Typography>
-            {t('login_or')}
-          </Typography>
+          <Typography>{t('register_or')}</Typography>
         </div>
         <ValidatorForm
           onError={() => {}}
@@ -78,7 +79,19 @@ function Login() {
               <TextValidator
                 variant="filled"
                 className={classes.input}
-                label={t('login_email')}
+                label={t('register_name')}
+                onChange={handleChange('name')}
+                name="name"
+                value={values.name}
+                validators={['required']}
+                errorMessages={['This field is required']}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextValidator
+                variant="filled"
+                className={classes.input}
+                label={t('register_email')}
                 onChange={handleChange('email')}
                 name="email"
                 value={values.email}
@@ -86,12 +99,12 @@ function Login() {
                 errorMessages={['This field is required', 'Email is not valid']}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item md={6} xs={12}>
               <TextValidator
                 variant="filled"
                 type="password"
                 className={classes.input}
-                label={t('login_password')}
+                label={t('register_password')}
                 validators={['required']}
                 onChange={handleChange('password')}
                 errorMessages={['This field is required']}
@@ -99,30 +112,43 @@ function Login() {
                 value={values.password}
               />
             </Grid>
+            <Grid item md={6} xs={12}>
+              <TextValidator
+                variant="filled"
+                type="password"
+                className={classes.input}
+                label={t('register_confirm')}
+                validators={['isPasswordMatch', 'required']}
+                errorMessages={['Password mismatch', 'This field is required']}
+                onChange={handleChange('confirmPassword')}
+                name="confirm"
+                value={values.confirmPassword}
+              />
+            </Grid>
           </Grid>
-          <div className={classes.formHelper}>
+          <div className={classes.btnArea}>
             <FormControlLabel
               control={(
                 <Checkbox
+                  validators={['isTruthy']}
+                  errorMessages="This field is required"
                   checked={check}
-                  onChange={(e) => handleCheck(e)}
-                  color="secondary"
                   value={check}
-                  className={classes.check}
+                  onChange={(e) => handleCheck(e)}
+                  color="primary"
                 />
               )}
               label={(
                 <span className={text.caption}>
-                  {t('login_remember')}
+                  {t('form_terms')}
+                  &nbsp;
+                  <a href="/privacy">
+                    {t('form_privacy')}
+                  </a>
                 </span>
               )}
             />
-            <Button size="small" className={classes.buttonLink} href="/contact">
-              {t('login_forgot')}
-            </Button>
-          </div>
-          <div className={classes.btnArea}>
-            <Button variant="contained" fullWidth type="submit" color="secondary" size="large">
+            <Button variant="contained" type="submit" color="secondary" size="large">
               {t('continue')}
             </Button>
           </div>
@@ -132,4 +158,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

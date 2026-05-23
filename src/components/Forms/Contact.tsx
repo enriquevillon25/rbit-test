@@ -20,7 +20,7 @@ import Checkbox from './Checkbox';
 import useStyles from './form-style';
 
 function Contact() {
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles() as any;
   const { classes: text } = useText();
 
   const { t } = useTranslation('common');
@@ -87,7 +87,7 @@ function Contact() {
       <Container maxWidth="md" className={classes.innerWrap}>
         <IconButton
           href={routeLink.education.home}
-          component={Link}
+          component={Link as any}
           className={classes.backtohome}
           size="large"
         >
