@@ -6,10 +6,9 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import { Parallax } from "react-parallax";
 import { useTranslation } from "lib/useTranslation";
-import imgAPI from "public/images/imgAPI";
 import { useText } from "theme/common";
 import useStyles from "./subscribe-style";
-
+import imgAPI from "../../../public/images/imgAPI";
 function SubscribeForm() {
   const { classes } = useStyles();
   const { classes: text } = useText();
