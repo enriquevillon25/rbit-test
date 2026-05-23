@@ -1,15 +1,16 @@
 import palette from './palette';
+import { neutralColors, shadowTokens } from './tokens';
 const appTheme = (color, mode) => ({
   palette: {
     mode,
     primary: palette[color].palette.primary,
     secondary: palette[color].palette.secondary,
     action: {
-      hover: mode === 'dark' ? 'rgba(128,128,128, 0.9)' : 'rgba(128,128,128, 0.05)',
+      hover: mode === 'dark' ? neutralColors.hoverDark : neutralColors.hoverLight,
       hoverOpacity: 0.05
     },
     background: {
-      paper: mode === 'dark' ? '#303030' : '#FFFFFF',
+      paper: mode === 'dark' ? neutralColors.surfaceDark : neutralColors.white,
     },
   },
   typography: {
@@ -19,7 +20,7 @@ const appTheme = (color, mode) => ({
     ].join(',')
   },
   shade: {
-    light: '0 0 13px -1px rgba(0, 0, 0, 0.22)',
+    light: shadowTokens.soft,
   },
   rounded: {
     small: '8px',
@@ -99,10 +100,10 @@ const appTheme = (color, mode) => ({
           borderRadius: 12
         },
         elevation1: {
-          boxShadow: mode === 'dark' ? '0px 1px 3px 0px rgba(64, 64, 64, 1), 0px 1px 1px 0px rgba(42, 42, 42, 1), 0px 2px 1px -1px rgba(20, 20, 20, 1)' : '0 1.5px 12px 2px rgba(0, 0, 0, 0.06)'
+          boxShadow: mode === 'dark' ? shadowTokens.paperDark : shadowTokens.paperLight
         },
         elevation4: {
-          boxShadow: mode === 'dark' ? '0px 2px 4px -1px rgba(64, 64, 64, 0.46), 0px 4px 5px 0px rgba(42, 42, 42, 0.32), 0px 1px 10px 0px rgba(20, 20, 20, 0.12)' : '0 1.5px 12px 4px rgba(0, 0, 0, 0.12)'
+          boxShadow: mode === 'dark' ? shadowTokens.paperDarkStrong : shadowTokens.paperLightStrong
         },
         root: {
           '&.MuiPopover-paper': {
@@ -114,10 +115,10 @@ const appTheme = (color, mode) => ({
     MuiButton: {
       styleOverrides: {
         containedSecondary: {
-          color: '#FFFFFF',
+          color: neutralColors.white,
         },
         containedPrimary: {
-          color: '#FFFFFF',
+          color: neutralColors.white,
         },
         root: {
           borderRadius: 10,
@@ -144,7 +145,7 @@ const appTheme = (color, mode) => ({
         root: {
           borderRadius: '12px !important',
           backgroundColor: 'transparent !important',
-          border: `1px solid ${mode === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'}`,
+          border: `1px solid ${mode === 'dark' ? neutralColors.darkBorder : neutralColors.lightBorder}`,
           '&:before': {
             display: 'none'
           },

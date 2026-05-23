@@ -1,5 +1,6 @@
 import { makeStyles } from 'tss-react/mui';
 import { alpha } from '@mui/material/styles';
+import { shadowTokens } from 'theme/tokens';
 
 const useStyles = makeStyles({ uniqId: 'explore' })((theme, _params, classes) => ({
   root: {
@@ -9,7 +10,6 @@ const useStyles = makeStyles({ uniqId: 'explore' })((theme, _params, classes) =>
       padding: theme.spacing(5, 0)
     },
     [theme.breakpoints.up('md')]: {
-      // backgroundImage: theme.palette.mode === 'light' ? `linear-gradient(to left, rgba(255, 255, 255, 0) 20%, ${alpha(theme.palette.secondary.light, 0.3)} 10%)` : `linear-gradient(to left, rgba(255, 255, 255, 0) 20%, ${alpha(theme.palette.secondary.dark, 0.3)} 10%)`
     },
     '& > .MuiContainer-root': {
       position: 'relative'
@@ -129,7 +129,7 @@ const useStyles = makeStyles({ uniqId: 'explore' })((theme, _params, classes) =>
       height: 80,
       left: '50%',
       transform: 'translate(-50%)',
-      boxShadow: theme.palette.mode === 'light' ? '0 1.5px 12px 2px rgba(0, 0, 0, 0.06)' : '0px 1px 3px 0px rgba(64, 64, 64, 1), 0px 1px 1px 0px rgba(42, 42, 42, 1), 0px 2px 1px -1px rgba(20, 20, 20, 1)'
+      boxShadow: theme.palette.mode === 'light' ? shadowTokens.paperLight : shadowTokens.paperDark
     },
     '&:before': {
       width: '80%',

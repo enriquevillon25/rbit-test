@@ -1,4 +1,5 @@
 import { makeStyles } from 'tss-react/mui';
+import { shadowTokens } from 'theme/tokens';
 
 const titleStyles = makeStyles({ uniqId: 'title' })((theme, _params, classes) => ({
   dark: {},
@@ -67,7 +68,7 @@ const titleStyles = makeStyles({ uniqId: 'title' })((theme, _params, classes) =>
       '& h4': {
         color: theme.palette.common.white,
         '&:before': {
-          backgroundColor: 'rgba(255, 255, 255, 0.5) !important'
+          backgroundColor: `${shadowTokens.titleOnDark} !important`
         }
       },
       [`& .${classes.desc}`]: {

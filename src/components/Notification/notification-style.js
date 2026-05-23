@@ -1,4 +1,5 @@
 import { makeStyles } from 'tss-react/mui';
+import { neutralColors } from 'theme/tokens';
 
 const notificationStyles = makeStyles({ uniqId: 'notif' })(theme => ({
   notification: {
@@ -9,7 +10,7 @@ const notificationStyles = makeStyles({ uniqId: 'notif' })(theme => ({
     '& > div': {
       width: '100%',
       color: theme.palette.common.white,
-      background: '#424242',
+      background: neutralColors.notification,
       [theme.breakpoints.up('sm')]: {
         padding: theme.spacing(1, 4),
       },

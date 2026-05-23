@@ -100,7 +100,7 @@ const useStyles = makeStyles({ uniqId: 'banner' })((theme, _params, classes) => 
     width: '120%',
     overflow: 'hidden',
     height: 860,
-    background: '#D9453C',
+    background: theme.palette.primary.main,
     // background: theme.palette.mode === 'light' ? lighten(theme.palette.primary.light, 0.7) : darken(theme.palette.primary.dark, 0.7),
     [theme.breakpoints.down('md')]: {
       height: 1120

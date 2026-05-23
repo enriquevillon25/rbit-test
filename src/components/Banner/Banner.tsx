@@ -67,7 +67,11 @@ function Banner() {
                   variant="outlined"
                   // className={classes.button}
                   onClick={handleWhatsApp}
-                  style={{ zIndex: 10, background: "white", color: "black" }}
+                  sx={{
+                    zIndex: 10,
+                    backgroundColor: "common.white",
+                    color: "common.black",
+                  }}
                 >
                   Diagnostico gratuito
                 </Button>
