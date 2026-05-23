@@ -13,10 +13,6 @@ const sectionMargin = (margin: number): number => margin * 20;
 
 const useStyles = makeStyles({ uniqId: "landing-page" })((theme) => ({
   containerWrap: {
-    position: "relative",
-    width: "100%",
-    overflow: "hidden",
-    background: theme.palette.background.paper,
     "& > section": {
       position: "relative",
     },

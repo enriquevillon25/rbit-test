@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import { Parallax } from "react-parallax";
 import { useTranslation } from "lib/useTranslation";
-import bgImage from "public/images/macbooks.jpeg";
+import imgAPI from "public/images/imgAPI";
 import { useText } from "theme/common";
 import useStyles from "./subscribe-style";
 
@@ -16,9 +16,7 @@ function SubscribeForm() {
   const { t } = useTranslation("common");
   const [value, setValue] = useState("");
 
-  function handleChange(
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
+  function handleChange(event) {
     setValue(event.target.value);
   }
 
@@ -26,7 +24,7 @@ function SubscribeForm() {
     <div className={classes.root}>
       <Parallax
         blur={0}
-        bgImage={bgImage}
+        bgImage={imgAPI.education[18]}
         bgImageAlt="benefit"
         strength={300}
       >
@@ -51,6 +49,7 @@ function SubscribeForm() {
               value={value}
             />
             <Button variant="contained" size="large" color="primary">
+              {/* {t('education-landing.subscribe_subscribe')} */}
               ENVIAR
             </Button>
           </form>
