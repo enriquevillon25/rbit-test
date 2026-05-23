@@ -4,13 +4,12 @@ import createEmotionServer from '@emotion/server/create-instance';
 import { getInitColorSchemeScript } from '@mui/material/styles';
 import createEmotionCache from '../theme/createEmotionCache';
 import HeadComponent from '../components/head';
-import i18nextConfig from 'next-i18next.config';
 
 class MyDocument extends Document {
   render() {
-    const currentLocale = this.props.__NEXT_DATA__.query.locale || i18nextConfig.i18n.defaultLocale;
+    const currentLocale = 'es';
     return (
-      <Html lang={currentLocale} dir={currentLocale === 'ar' ? 'rtl' : 'ltr'}>
+      <Html lang={currentLocale} dir="ltr">
         <HeadComponent />
         <body>
           {getInitColorSchemeScript()}

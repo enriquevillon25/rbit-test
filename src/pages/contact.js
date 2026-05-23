@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
-import Head from "next/head";
-import brand from "data/text/brand";
-import ContactFrm from "components/Forms/Contact";
+import React, { Fragment } from 'react';
+import Head from 'next/head';
+import brand from 'data/text/brand';
+import ContactFrm from 'components/Forms/Contact';
 
 function Contact() {
   return (
     <Fragment>
       <Head>
-        <title>{brand.education.name + " - Contact"}</title>
+        <title>{brand.education.name + ' - Contact'}</title>
       </Head>
       <div>
         <ContactFrm />

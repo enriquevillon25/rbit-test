@@ -49,7 +49,7 @@ function Banner() {
           <Grid item lg={6} md={7} xs={12}>
             <div className={classes.bannerText}>
               <div className={classes.title}>
-                <Typography variant="h3" className={text.title}>
+                <Typography component="h1" variant="h3" className={text.title}>
                   {t("education-landing.banner_title")}
                 </Typography>
               </div>
@@ -88,7 +88,7 @@ function Banner() {
                   </div>
                   <img
                     src="/images/education/banner-artwork.png"
-                    alt="artwork"
+                    alt="Servicio técnico informático en Barcelona"
                   />
                   <div className={cx(classes.parallaxScene, classes.front)}>
                     <animated.div

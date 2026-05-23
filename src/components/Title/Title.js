@@ -31,7 +31,7 @@ export default function Title(props) {
   };
   return (
     <div className={cx(setAlign(align), classes.title, dark && classes.dark)}>
-      <Typography variant="h4" className={cx(setColor(color), text.title)}>
+      <Typography component="h2" variant="h4" className={cx(setColor(color), text.title)}>
         <span>
           {head}
         </span>
