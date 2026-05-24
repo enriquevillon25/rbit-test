@@ -3,6 +3,10 @@ import { makeStyles } from 'tss-react/mui';
 const testiStyles = makeStyles({ uniqId: 'testi' })(theme => ({
   root: {
     position: 'relative',
+    padding: theme.spacing(6, 0),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(4, 0),
+    },
   },
   carousel: {
     position: 'relative',
@@ -13,7 +17,7 @@ const testiStyles = makeStyles({ uniqId: 'testi' })(theme => ({
   item: {
     padding: theme.spacing(0, 1),
     [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(7, 1, 0),
+      padding: theme.spacing(4.5, 1, 0),
     },
     '&:focus': {
       outline: 'none'

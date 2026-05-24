@@ -39,7 +39,6 @@ export const landingSections: LandingSectionConfig[] = [
   {
     id: "testimonials",
     Component: Testimonials,
-    spacing: "top",
   },
   {
     id: "faq",
@@ -48,6 +47,5 @@ export const landingSections: LandingSectionConfig[] = [
   {
     id: "contact",
     Component: Subscribe,
-    spacing: "topShort",
   },
 ];

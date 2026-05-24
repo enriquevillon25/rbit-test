@@ -3,11 +3,11 @@ import type { GetStaticProps } from "next";
 import LandingPage from "features/landing/LandingPage";
 import type { LandingPageProps } from "features/landing/types";
 
-function Landing(props: LandingPageProps): JSX.Element {
-  return <LandingPage {...props} language="es" />;
+function LandingEn(props: LandingPageProps): JSX.Element {
+  return <LandingPage {...props} language="en" />;
 }
 
-export default Landing;
+export default LandingEn;
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {},

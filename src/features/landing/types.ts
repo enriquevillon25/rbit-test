@@ -1,10 +1,12 @@
 import type { ComponentType } from "react";
+import type { SupportedLanguage } from "i18n/languages";
 
 export type LandingSectionSpacing = "top" | "topShort";
 
 export interface LandingPageProps {
   onToggleDark: () => void;
   onToggleDir: () => void;
+  language?: SupportedLanguage;
 }
 
 export interface LandingSectionConfig {

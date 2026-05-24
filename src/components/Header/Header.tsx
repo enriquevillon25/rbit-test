@@ -4,6 +4,7 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Scrollspy from "react-scrollspy";
 import { useTranslation } from "lib/useTranslation";
 import useClientMediaQuery, { useIsMounted } from "lib/useClientMediaQuery";
@@ -13,6 +14,10 @@ import routeLink from "data/text/link";
 import useStyles from "./header-style";
 import Link from "../Link";
 import navMenu from "./menu";
+import LanguageSwitcher from "./LanguageSwitcher";
+
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=Carrer%20de%20Bail%C3%A8n%20109%20Local%202%20Barcelona";
 
 let counter = 0;
 
@@ -170,13 +175,36 @@ function Header(props: HeaderProps) {
                     </li>
                   ))}
                   <li>
-                    <Button component={Link as any} href={routeLink.education.contact}>
+                    <Button
+                      component={SmoothAnchor as any}
+                      offset={120}
+                      href="#contact"
+                    >
                       <span className={classes.text}>
                         {t("education-landing.header_contact")}
                       </span>
                     </Button>
                   </li>
                 </Scrollspy>
+              )}
+            </nav>
+            <nav className={classes.navActions} aria-label={t("education-landing.header_language")}>
+              {isMounted && isDesktop && (
+                <Fragment>
+                  <Button
+                    component="a"
+                    href={GOOGLE_MAPS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={classes.locationLink}
+                    startIcon={<LocationOnIcon />}
+                  >
+                    <span className={classes.locationPrimary}>
+                      Carrer de Bailèn 109
+                    </span>
+                  </Button>
+                  <LanguageSwitcher />
+                </Fragment>
               )}
             </nav>
             {/* <nav className={cx(classes.navMenu, classes.navAuth)}>

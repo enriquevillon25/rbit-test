@@ -14,10 +14,13 @@ export interface HomeTextItem {
 export const homeHero = {
   title: "Reparación de ordenadores y portátiles en Barcelona",
   subtitle:
-    "Servicio técnico informático en Barcelona para portátiles, PC, MacBook, móviles, cambio de SSD, instalación de Windows y recuperación de datos.",
+    "Servicio técnico en Eixample / Bailèn para PC, portátiles, MacBook, móviles, SSD y recuperación de datos.",
   primaryCta: "Solicitar diagnóstico por WhatsApp",
   secondaryCta: "Ver servicios",
   location: "Carrer de Bailèn, 109 · Eixample · Barcelona",
+  image: "/images/education/repair-ordenador.webp",
+  imageAlt: "Reparación de ordenadores y portátiles en Barcelona",
+  trustItems: ["Diagnóstico claro", "Presupuesto antes de reparar", "Atención local"],
 };
 
 export const homeServices: HomeService[] = [

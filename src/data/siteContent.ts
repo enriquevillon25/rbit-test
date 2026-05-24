@@ -9,7 +9,6 @@ import { featuredSeoServices, primarySeoServices } from "seo/services";
 export type LandingNavItem =
   | "services"
   | "problems"
-  | "local"
   | "testimonials"
   | "faq";
 
@@ -76,7 +75,6 @@ function buildBusinessMapUrl(): string {
 export const navItems: LandingNavItem[] = [
   "services",
   "problems",
-  "local",
   "testimonials",
   "faq",
 ];

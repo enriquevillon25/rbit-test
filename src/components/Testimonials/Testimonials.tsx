@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Carousel from "react-slick";
 import IconButton from "@mui/material/IconButton";
 import { testimonials } from "data/siteContent";
+import { useLocalizedContent } from "i18n/useLocalizedContent";
 import Title from "../Title";
 import TestiCard from "../Cards/Testimonial";
 import useStyle from "./testi-style";
@@ -9,6 +10,7 @@ import useStyle from "./testi-style";
 function Testimonials() {
   const slider = useRef(null);
   const { classes, cx } = useStyle() as any;
+  const content = useLocalizedContent();
   const visibleTestimonials = testimonials.slice(0, 6);
   const settings = {
     dots: false,
@@ -32,8 +34,8 @@ function Testimonials() {
   return (
     <div className={classes.root}>
       <Title
-        head="Clientes que confían en RBIT"
-        desc="Opiniones de clientes sobre reparación informática en Barcelona."
+        head={content.sections.testimonialsTitle}
+        desc={content.sections.testimonialsText}
         align="center"
         color="primary"
       />
