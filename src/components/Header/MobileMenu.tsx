@@ -5,7 +5,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { useTranslation } from 'lib/useTranslation';
-import routeLink from 'data/text/link';
 import useStyles from './header-style';
 import navMenu from './menu';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -21,8 +20,7 @@ interface MobileMenuProps {
 function MobileMenu(props: MobileMenuProps) {
   const { classes, cx } = useStyles() as any;
   const { toggleDrawer, open } = props;
-  const { t, i18n } = useTranslation('common');
-  const curLang = '/' + i18n.language;
+  const { t } = useTranslation('common');
 
   const SideList = () => (
     <div
@@ -71,18 +69,6 @@ function MobileMenu(props: MobileMenuProps) {
           >
             <LanguageSwitcher mobile />
           </div>
-          <Divider className={classes.dividerSidebar} />
-          {['login', 'register'].map((item, index) => (
-            <ListItem
-              button
-              component="a"
-              href={curLang + routeLink.education[item]}
-              key={index.toString()}
-              style={{ animationDuration: navMenu.length * 0.15 + 's' }}
-            >
-              <ListItemText primary={t('education-landing.header_' + item)} className={classes.menuList} />
-            </ListItem>
-          ))}
         </List>
       </div>
     </div>

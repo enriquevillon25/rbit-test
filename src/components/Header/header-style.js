@@ -130,6 +130,9 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
     alignItems: 'center',
     minHeight: 86,
     padding: theme.spacing(0.75, 0),
+    [theme.breakpoints.down('sm')]: {
+      minHeight: 76,
+    },
     [theme.breakpoints.up('sm')]: {
       alignItems: 'center',
     },
@@ -160,10 +163,10 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
       transition: 'all 0.3s ease-out',
       width: 126,
       height: 72,
-      objectFit: 'cover',
+      objectFit: 'contain',
       [theme.breakpoints.down('sm')]: {
-        height: 64,
-        width: 64
+        height: 56,
+        width: 116
       }
     }
   },
@@ -398,7 +401,7 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
   paperNav: {
     width: '100%',
     [theme.breakpoints.up(680)]: {
-      width: 300,
+      width: 320,
     },
   },
   mobileMenu: {
@@ -412,12 +415,12 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
   mobileNav: {
     background: theme.palette.background.paper,
     [`& .${classes.menu}`]: {
-      padding: theme.spacing(4),
+      padding: theme.spacing(3, 4, 4),
       overflow: 'auto',
-      top: theme.spacing(12),
+      top: theme.spacing(10),
       width: '100%',
       position: 'absolute',
-      height: 'calc(100% - 180px)',
+      height: 'calc(100% - 112px)',
       '& a': {
         animationName: '$slideRight',
         animationTimingFunction: 'ease'
