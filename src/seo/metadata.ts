@@ -16,7 +16,7 @@ export const landingSeoMetadata: SeoMetadata = {
   title:
     "Reparación de Ordenadores y Portátiles en Barcelona | RBIT Informática",
   description:
-    "Servicio técnico informático en Barcelona especializado en reparación de ordenadores, portátiles, MacBook, móviles, instalación de SSD y recuperación de datos en Eixample.",
+    "Servicio técnico informático en Barcelona. Reparación de portátiles, ordenadores, MacBook, móviles, cambio de SSD, instalación de Windows y recuperación de datos en RBIT Informática.",
   canonicalUrl: businessInfo.url,
   locale: businessInfo.locale,
   siteName: businessInfo.name,

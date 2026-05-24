@@ -1,5 +1,6 @@
 import { makeStyles } from 'tss-react/mui';
 import { alpha, darken } from '@mui/material/styles';
+import { shadowTokens, socialColors } from 'theme/tokens';
 
 const pattern = '/images/education/bg-pattern.png';
 const plane = '/images/education/plane.png';
@@ -47,7 +48,7 @@ const contactStyles = makeStyles({ uniqId: 'form' })((theme, _params, classes) =
     '&:before': {
       [theme.breakpoints.up('md')]: {
         content: '""',
-        boxShadow: '0 0 12px 2px rgba(0, 0, 0, 0.05)',
+        boxShadow: shadowTokens.formLight,
         width: '100%',
         height: '100%',
         background: theme.palette.primary.main,
@@ -70,7 +71,7 @@ const contactStyles = makeStyles({ uniqId: 'form' })((theme, _params, classes) =
     position: 'relative',
     borderRadius: 40,
     overflow: 'vivible',
-    boxShadow: '0 1.5px 12px 2px rgba(0, 0, 0, 0.28)',
+    boxShadow: shadowTokens.formDark,
     background: `url(${plane}) no-repeat 90% bottom ${theme.palette.primary.dark}`,
     [theme.breakpoints.down('sm')]: {
       boxShadow: 'none'
@@ -386,7 +387,7 @@ const contactStyles = makeStyles({ uniqId: 'form' })((theme, _params, classes) =
     },
     '& > *': {
       zIndex: 4,
-      boxShadow: '0 0px 18px 0 rgba(0, 0, 0, 0.17)',
+      boxShadow: shadowTokens.image,
       position: 'absolute',
       transform: 'rotate(45deg)'
     }
@@ -461,21 +462,21 @@ const contactStyles = makeStyles({ uniqId: 'form' })((theme, _params, classes) =
     }
   },
   blueBtn: {
-    background: '#28aae1',
+    background: socialColors.twitter,
     '&:hover': {
-      background: darken('#28aae1', 0.2),
+      background: darken(socialColors.twitter, 0.2),
     }
   },
   naviBtn: {
-    background: '#3b579d',
+    background: socialColors.facebook,
     '&:hover': {
-      background: darken('#3b579d', 0.2),
+      background: darken(socialColors.facebook, 0.2),
     }
   },
   redBtn: {
-    background: '#dd493c',
+    background: socialColors.google,
     '&:hover': {
-      background: darken('#dd493c', 0.2),
+      background: darken(socialColors.google, 0.2),
     }
   },
   separator: {

@@ -1,12 +1,10 @@
 import { businessInfo } from "./businessInfo";
-import { seoFaqs } from "./faqs";
-import { primarySeoServices } from "./services";
-import { landingSeoMetadata } from "./metadata";
+import { defaultLandingContent, type LandingContent } from "i18n/content";
 
 export type JsonLdSchema = Record<string, unknown>;
 
-function buildServiceCatalog(): JsonLdSchema[] {
-  return primarySeoServices.map((service) => ({
+function buildServiceCatalog(content: LandingContent): JsonLdSchema[] {
+  return content.services.map((service) => ({
     "@type": "Offer",
     itemOffered: {
       "@type": "Service",
@@ -21,7 +19,9 @@ function buildServiceCatalog(): JsonLdSchema[] {
   }));
 }
 
-export function buildLocalBusinessJsonLd(): JsonLdSchema {
+export function buildLocalBusinessJsonLd(
+  content: LandingContent = defaultLandingContent
+): JsonLdSchema {
   return {
     "@context": "https://schema.org",
     "@type": ["ComputerStore", "LocalBusiness"],
@@ -31,7 +31,7 @@ export function buildLocalBusinessJsonLd(): JsonLdSchema {
     url: businessInfo.url,
     image: businessInfo.imageUrl,
     logo: businessInfo.logoUrl,
-    description: landingSeoMetadata.description,
+    description: content.metadata.description,
     telephone: businessInfo.contact.telephone,
     email: businessInfo.contact.email,
     priceRange: businessInfo.priceRange,
@@ -45,34 +45,38 @@ export function buildLocalBusinessJsonLd(): JsonLdSchema {
       name,
     })),
     openingHours: businessInfo.openingHours,
-    serviceType: primarySeoServices.map((service) => service.title),
+    serviceType: content.services.map((service) => service.title),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Servicios de reparación informática en Barcelona",
-      itemListElement: buildServiceCatalog(),
+      name: content.sections.servicesTitle,
+      itemListElement: buildServiceCatalog(content),
     },
   };
 }
 
-export function buildWebsiteJsonLd(): JsonLdSchema {
+export function buildWebsiteJsonLd(
+  content: LandingContent = defaultLandingContent
+): JsonLdSchema {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${businessInfo.url}#website`,
     url: businessInfo.url,
     name: businessInfo.name,
-    inLanguage: businessInfo.language,
+    inLanguage: content.htmlLang,
     publisher: {
       "@id": `${businessInfo.url}#business`,
     },
   };
 }
 
-export function buildFaqJsonLd(): JsonLdSchema {
+export function buildFaqJsonLd(
+  content: LandingContent = defaultLandingContent
+): JsonLdSchema {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: seoFaqs.map((faq) => ({
+    mainEntity: content.faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: {
@@ -83,6 +87,12 @@ export function buildFaqJsonLd(): JsonLdSchema {
   };
 }
 
-export function buildLandingJsonLd(): JsonLdSchema[] {
-  return [buildLocalBusinessJsonLd(), buildWebsiteJsonLd(), buildFaqJsonLd()];
+export function buildLandingJsonLd(
+  content: LandingContent = defaultLandingContent
+): JsonLdSchema[] {
+  return [
+    buildLocalBusinessJsonLd(content),
+    buildWebsiteJsonLd(content),
+    buildFaqJsonLd(content),
+  ];
 }

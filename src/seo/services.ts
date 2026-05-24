@@ -43,9 +43,9 @@ export const primarySeoServices: SeoService[] = [
   },
   {
     title: "Cambio e instalación de SSD",
-    shortTitle: "Instalación de SSD",
+    shortTitle: "Cambio SSD y RAM",
     description:
-      "Sustitución de disco duro por SSD, clonación de datos y optimización para mejorar el arranque y el rendimiento.",
+      "Sustitución de disco duro por SSD, ampliación de RAM, clonación de datos y optimización para mejorar arranque y rendimiento.",
     imageAlt: "Instalación de SSD en portátil",
   },
   {

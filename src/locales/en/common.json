@@ -37,6 +37,7 @@
   "register_title": "Encantados de conocerte",
   "register_subtitle": "Regístrate para empezar",
   "accept": "Aceptar",
+  "es": "Español",
   "en": "Inglés",
   "de": "Alemán",
   "zh": "Chino (simplificado)",
@@ -46,6 +47,10 @@
   "notif_msg": "Este es un mensaje informativo importante. Haz clic en el botón para cerrarlo.",
   "education-landing": {
     "header_home": "Inicio",
+    "header_services": "Servicios",
+    "header_problems": "Problemas",
+    "header_local": "Eixample",
+    "header_faq": "FAQ",
     "header_feature": "Servicio técnico",
     "header_popular": "Repuestos",
     "header_explore": "Servicios",
@@ -80,8 +85,8 @@
     "blog_title": "Últimas novedades",
     "blog_desc": "Noticias, actualizaciones y consejos tecnológicos",
     "blog_video": "Consejos para mejorar el rendimiento de tu ordenador",
-    "subscribe_title": "Contáctanos",
-    "subscribe_subtitle": "Suscríbete y recibe novedades, consejos y ofertas especiales.",
+    "subscribe_title": "¿Necesitas reparar tu ordenador, portátil o móvil?",
+    "subscribe_subtitle": "Escríbenos por WhatsApp y te orientamos con el diagnóstico, la viabilidad y el presupuesto antes de reparar.",
     "subscribe_input": "Introduce tu correo electrónico",
     "subscribe_subscribe": "Suscribirse"
   }

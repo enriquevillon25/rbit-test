@@ -1,4 +1,5 @@
 import { makeStyles } from "tss-react/mui";
+import { neutralColors, semanticColors, shadowTokens } from "theme/tokens";
 
 const cardsStyles = makeStyles({ uniqId: "card" })(
   (theme, _params, classes) => ({
@@ -46,7 +47,7 @@ const cardsStyles = makeStyles({ uniqId: "card" })(
     },
     rating: {
       "& svg": {
-        color: "#FFC107",
+        color: semanticColors.warning,
       },
     },
     /* Category Card */
@@ -56,8 +57,8 @@ const cardsStyles = makeStyles({ uniqId: "card" })(
       marginBottom: theme.spacing(3),
       overflow: "hidden",
       position: "relative",
-      border: "1px solid black",
-      background:'white',
+      border: `1px solid ${neutralColors.borderDark}`,
+      background: neutralColors.white,
       borderColor: theme.palette.secondary.light,
       textAlign: "center",
       display: "flex",
@@ -102,7 +103,7 @@ const cardsStyles = makeStyles({ uniqId: "card" })(
         left: 0,
         color: theme.palette.common.white,
         backdropFilter: "saturate(100%) blur(10px)",
-        background: "rgba(0, 0, 0, 0.32)",
+        background: shadowTokens.overlay,
         [theme.breakpoints.down("lg")]: {
           padding: theme.spacing(2),
           bottom: 0,
@@ -153,25 +154,6 @@ const cardsStyles = makeStyles({ uniqId: "card" })(
       position: "relative",
     },
     fold: {
-      // '&:before, &:after': {
-      //   content: '""',
-      //   position: 'absolute',
-      //   borderRadius: 16,
-      //   border: `1px solid ${theme.palette.divider}`,
-      //   background: theme.palette.background.paper,
-      //   height: 80,
-      //   left: '50%',
-      //   transform: 'translate(-50%)',
-      //   boxShadow: theme.palette.mode === 'light' ? '0 1.5px 12px 2px rgba(0, 0, 0, 0.06)' : '0px 1px 3px 0px rgba(64, 64, 64, 1), 0px 1px 1px 0px rgba(42, 42, 42, 1), 0px 2px 1px -1px rgba(20, 20, 20, 1)'
-      // },
-      // '&:before': {
-      //   width: '80%',
-      //   bottom: -25
-      // },
-      // '&:after': {
-      //   width: '90%',
-      //   bottom: -15
-      // }
     },
     /* Testimonial Card */
     testimonial: {

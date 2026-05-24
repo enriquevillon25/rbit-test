@@ -1,4 +1,6 @@
-module.exports = {
+import { brandColors, neutralColors } from './tokens';
+
+const palettes = {
   fresh: {
     palette: {
       primary: {
@@ -29,16 +31,8 @@ module.exports = {
   },
   smart: {
     palette: {
-      primary: {
-        light: '#D9453C',
-        main: '#D9453C',
-        dark: '#000000'
-      },
-      secondary: {
-        light: '#D9453C',
-        main: '#D9453C',
-        dark: '#FF6F00'
-      }
+      primary: brandColors.primary,
+      secondary: brandColors.secondary
     }
   },
   oceanBlue: {
@@ -362,3 +356,5 @@ module.exports = {
     },
   }
 };
+
+export default palettes;

@@ -5,34 +5,19 @@ export interface SeoFaq {
 
 export const seoFaqs: SeoFaq[] = [
   {
-    question: "¿Dónde puedo reparar un portátil en Barcelona?",
+    question: "¿Reparáis portátiles en Barcelona?",
     answer:
-      "Puedes reparar tu portátil en RBIT Informática, servicio técnico en Barcelona especializado en diagnóstico, reparación y mantenimiento de portátiles.",
+      "Sí. En RBIT Informática reparamos portátiles en Barcelona con problemas de arranque, pantalla, batería, teclado, disco, ventilación o rendimiento.",
   },
   {
-    question: "¿RBIT repara ordenadores en la zona Eixample?",
+    question: "¿Hacéis diagnóstico antes de reparar?",
     answer:
-      "Sí. RBIT Informática atiende reparaciones de ordenadores, PC y portátiles en Barcelona, con foco local en la zona Eixample y Bailèn.",
+      "Sí. Revisamos el equipo para explicar la avería, la viabilidad, el presupuesto y el plazo estimado antes de confirmar la reparación.",
   },
   {
-    question: "¿Hacéis recuperación de datos de discos duros o SSD?",
+    question: "¿Podéis cambiar SSD o ampliar RAM?",
     answer:
-      "Sí. Revisamos discos duros, SSD, memorias USB y equipos dañados para valorar la viabilidad de recuperación de datos antes de intervenir.",
-  },
-  {
-    question: "¿Podéis cambiar el disco duro por un SSD?",
-    answer:
-      "Sí. Podemos cambiar un disco duro por un SSD, clonar los datos cuando sea posible y optimizar el equipo para mejorar arranque y rendimiento.",
-  },
-  {
-    question: "¿Reparáis portátiles que no encienden?",
-    answer:
-      "Sí. Diagnosticamos portátiles que no encienden para revisar cargador, batería, placa base, conectores, memoria, disco y otros componentes.",
-  },
-  {
-    question: "¿Ofrecéis servicio técnico informático a domicilio?",
-    answer:
-      "Sí. Ofrecemos soporte informático a domicilio en Barcelona para redes WiFi, configuración de equipos, impresoras y resolución de incidencias.",
+      "Sí. Podemos instalar SSD, clonar datos cuando sea posible, ampliar RAM y optimizar portátiles o PC para mejorar el rendimiento.",
   },
   {
     question: "¿Reparáis MacBook?",
@@ -40,8 +25,13 @@ export const seoFaqs: SeoFaq[] = [
       "Sí. Realizamos diagnóstico y reparación de MacBook con problemas de arranque, batería, pantalla, sobrecalentamiento, software o almacenamiento.",
   },
   {
-    question: "¿Cuánto tarda una reparación de ordenador?",
+    question: "¿Recuperáis datos de discos dañados?",
     answer:
-      "El tiempo depende de la avería, disponibilidad de repuestos y complejidad del diagnóstico. Primero revisamos el equipo y explicamos la viabilidad y el plazo estimado.",
+      "Sí. Revisamos discos duros, SSD, memorias USB y equipos dañados para valorar la recuperación de datos siempre que sea técnicamente viable.",
+  },
+  {
+    question: "¿Dónde está RBIT Informática?",
+    answer:
+      "Estamos en Carrer de Bailèn, 109, Local 2, zona Eixample, 08009 Barcelona.",
   },
 ];

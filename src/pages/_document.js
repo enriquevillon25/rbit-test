@@ -5,9 +5,15 @@ import { getInitColorSchemeScript } from '@mui/material/styles';
 import createEmotionCache from '../theme/createEmotionCache';
 import HeadComponent from '../components/head';
 
+const htmlLanguageByRoute = {
+  '/': 'es-ES',
+  '/ca': 'ca-ES',
+  '/en': 'en',
+};
+
 class MyDocument extends Document {
   render() {
-    const currentLocale = 'es';
+    const currentLocale = htmlLanguageByRoute[this.props.__NEXT_DATA__?.page] || 'es-ES';
     return (
       <Html lang={currentLocale} dir="ltr">
         <HeadComponent />

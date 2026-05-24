@@ -6,7 +6,11 @@ import repairPCImage from "public/images/education/repair-ordenador.webp";
 import { businessInfo } from "seo/businessInfo";
 import { featuredSeoServices, primarySeoServices } from "seo/services";
 
-export type LandingNavItem = "feature" | "explore" | "popular" | "about";
+export type LandingNavItem =
+  | "services"
+  | "problems"
+  | "testimonials"
+  | "faq";
 
 export interface ImageTextItem {
   img: string;
@@ -69,10 +73,10 @@ function buildBusinessMapUrl(): string {
 }
 
 export const navItems: LandingNavItem[] = [
-  "feature",
-  "explore",
-  "popular",
-  "about",
+  "services",
+  "problems",
+  "testimonials",
+  "faq",
 ];
 
 export const serviceCategories: ImageTextItem[] = [

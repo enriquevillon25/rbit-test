@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { makeStyles } from "tss-react/mui";
-import { seoFaqs } from "seo/faqs";
+import { useLocalizedContent } from "i18n/useLocalizedContent";
 
 const useStyles = makeStyles({ uniqId: "seo_faq" })((theme) => ({
   root: {
@@ -50,22 +50,21 @@ const useStyles = makeStyles({ uniqId: "seo_faq" })((theme) => ({
 
 function SEOFaqSection(): JSX.Element {
   const { classes } = useStyles();
+  const content = useLocalizedContent();
 
   return (
     <div className={classes.root}>
       <Container maxWidth="lg">
         <div className={classes.titleWrap}>
           <Typography component="h2" variant="h4" className={classes.title}>
-            Preguntas frecuentes sobre reparación informática en Barcelona
+            {content.sections.faqTitle}
           </Typography>
           <Typography className={classes.subtitle}>
-            Respuestas rápidas para clientes que buscan servicio técnico,
-            reparación de portátiles, recuperación de datos o mejora de
-            rendimiento en Barcelona.
+            {content.sections.faqSubtitle}
           </Typography>
         </div>
         <div className={classes.list}>
-          {seoFaqs.map((faq) => (
+          {content.faqs.map((faq) => (
             <Accordion key={faq.question} className={classes.item}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography component="h3" className={classes.question}>

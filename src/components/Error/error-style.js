@@ -1,4 +1,5 @@
 import { makeStyles } from 'tss-react/mui';
+import { neutralColors } from 'theme/tokens';
 
 const useStyles = makeStyles({ uniqId: 'error' })(theme => ({
   errorWrap: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles({ uniqId: 'error' })(theme => ({
       marginTop: theme.spacing(8)
     },
     '& h3': {
-      color: 'rgba(0, 0, 0, 0.54)',
+      color: neutralColors.textMuted,
       fontSize: 106,
       textTransform: 'capitalize',
       fontWeight: theme.typography.fontWeightBold,

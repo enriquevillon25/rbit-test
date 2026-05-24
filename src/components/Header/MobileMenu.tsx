@@ -8,6 +8,10 @@ import { useTranslation } from 'lib/useTranslation';
 import routeLink from 'data/text/link';
 import useStyles from './header-style';
 import navMenu from './menu';
+import LanguageSwitcher from './LanguageSwitcher';
+
+const GOOGLE_MAPS_URL =
+  'https://www.google.com/maps/search/?api=1&query=Carrer%20de%20Bail%C3%A8n%20109%20Local%202%20Barcelona';
 
 interface MobileMenuProps {
   open: boolean;
@@ -43,11 +47,30 @@ function MobileMenu(props: MobileMenuProps) {
           <ListItem
             button
             component="a"
-            href={curLang + routeLink.education.contact}
+            href="#contact"
             style={{ animationDuration: navMenu.length * 0.15 + 's' }}
           >
             <ListItemText primary={t('education-landing.header_contact')} className={classes.menuList} />
           </ListItem>
+          <Divider className={classes.dividerSidebar} />
+          <ListItem
+            button
+            component="a"
+            href={GOOGLE_MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ animationDuration: navMenu.length * 0.15 + 's' }}
+          >
+            <ListItemText primary="Carrer de Bailèn 109" className={classes.menuList} />
+          </ListItem>
+          <Divider className={classes.dividerSidebar} />
+          <div
+            className={classes.mobileLanguage}
+            onClick={(event) => event.stopPropagation()}
+            onKeyDown={(event) => event.stopPropagation()}
+          >
+            <LanguageSwitcher mobile />
+          </div>
           <Divider className={classes.dividerSidebar} />
           {['login', 'register'].map((item, index) => (
             <ListItem

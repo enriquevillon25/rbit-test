@@ -5,6 +5,7 @@ import JsonLd from "components/seo/JsonLd";
 import MainContainer from "components/MainContainer";
 import PageNav from "components/PageNav";
 import { buildLandingJsonLd } from "seo/structuredData";
+import { getLocalizedContent } from "i18n/content";
 import SeoHead from "./seo/SeoHead";
 import SectionRenderer from "./components/SectionRenderer";
 import { landingSections } from "./config/sections";
@@ -35,9 +36,10 @@ const useStyles = makeStyles({ uniqId: "landing-page" })((theme) => ({
 
 function LandingPage(props: LandingPageProps): JSX.Element {
   const { classes } = useStyles();
-  const { onToggleDark, onToggleDir } = props;
+  const { onToggleDark, onToggleDir, language = "es" } = props;
   const { showPageNav } = useLandingLayout();
-  const jsonLd = buildLandingJsonLd();
+  const content = getLocalizedContent(language);
+  const jsonLd = buildLandingJsonLd(content);
 
   const getSectionClass = (
     spacing?: LandingSectionSpacing
@@ -55,7 +57,7 @@ function LandingPage(props: LandingPageProps): JSX.Element {
 
   return (
     <Fragment>
-      <SeoHead />
+      <SeoHead content={content} />
       <JsonLd data={jsonLd} />
       <CssBaseline />
       <MainContainer onToggleDark={onToggleDark} onToggleDir={onToggleDir}>

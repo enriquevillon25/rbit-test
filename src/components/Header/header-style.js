@@ -48,11 +48,13 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
   header: {
     height: 'auto',
     color: theme.palette.text.primary,
-    background: 'none',
-    boxShadow: 'none',
+    background: alpha(theme.palette.background.paper, 0.96),
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
+    borderBottom: `1px solid ${alpha(theme.palette.common.black, 0.05)}`,
+    backdropFilter: 'blur(10px)',
     transition: 'all 0.5s ease-out',
     position: 'fixed',
-    zIndex: 20,
+    zIndex: 1200,
     '& .MuiContainer-root': {
       padding: 0
     },
@@ -67,8 +69,8 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
     [`&.${classes.fixed}`]: {
       position: 'fixed',
       top: 0,
-      boxShadow: theme.shadows[4],
-      background: theme.palette.background.paper,
+      boxShadow: '0 12px 32px rgba(0, 0, 0, 0.09)',
+      background: alpha(theme.palette.background.paper, 0.98),
       zIndex: 1000,
       [`& .${classes.logo}`]: {
         '& a': {
@@ -78,8 +80,8 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
           }
         },
         '& img': {
-          height: 64,
-          width: 84,
+          height: 54,
+          width: 96,
           margin: 0
         }
       },
@@ -125,8 +127,11 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
   },
   headerContent: {
     display: 'flex',
+    alignItems: 'center',
+    minHeight: 86,
+    padding: theme.spacing(0.75, 0),
     [theme.breakpoints.up('sm')]: {
-      alignItems: 'flex-start',
+      alignItems: 'center',
     },
     '& nav': {
       alignItems: 'center',
@@ -150,11 +155,12 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
       }
     },
     '& img': {
-      margin: `0 auto ${theme.spacing()}px`,
+      margin: 0,
       display: 'block',
       transition: 'all 0.3s ease-out',
-      width: 140,
-      height: 80,
+      width: 126,
+      height: 72,
+      objectFit: 'cover',
       [theme.breakpoints.down('sm')]: {
         height: 64,
         width: 64
@@ -164,7 +170,7 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
   active: {},
   invert: {},
   navLogo: {
-    padding: theme.spacing(),
+    padding: theme.spacing(0, 1),
     [`&.${classes.invert}`]: {
       [`& .${classes.logo}`]: {
         '& a': {
@@ -188,8 +194,8 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
     zIndex: 1
   },
   navMenu: {
-    marginLeft: '20%',
-    padding: theme.spacing(3, 1),
+    marginLeft: 'auto',
+    padding: theme.spacing(1.5, 1),
     '& > *': {
       margin: 0,
       [theme.breakpoints.up('lg')]: {
@@ -208,10 +214,10 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
     },
     '& ul': {
       listStyle: 'none',
-      paddingLeft: theme.spacing(6),
+      paddingLeft: theme.spacing(3),
       '& li': {
         [theme.breakpoints.up('lg')]: {
-          margin: theme.spacing(0, 1),
+          margin: theme.spacing(0, 0.35),
         },
         listStyle: 'none',
         position: 'relative',
@@ -222,9 +228,12 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
           background: 'none !important',
           boxShadow: 'none',
           position: 'relative',
-          padding: '6px',
-          margin: theme.spacing(0, 1),
+          padding: theme.spacing(1, 1.15),
+          margin: 0,
           minWidth: 0,
+          borderRadius: 999,
+          fontSize: 13,
+          fontWeight: theme.typography.fontWeightBold,
           color: theme.palette.text.primary,
           '&:after': {
             content: '""',
@@ -239,9 +248,10 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
           },
           '&:hover': {
             transition: 'all 0.3s ease-out',
+            background: `${alpha(theme.palette.primary.main, 0.06)} !important`,
             '&:after': {
-              width: '80%',
-              left: 4,
+              width: '55%',
+              left: '22%',
               background: theme.palette.mode === 'light' ? theme.palette.primary.light : theme.palette.primary.dark,
             }
           }
@@ -258,6 +268,69 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
         }
       }
     }
+  },
+  navActions: {
+    padding: theme.spacing(1.5, 0),
+    marginLeft: theme.spacing(2),
+    gap: theme.spacing(1),
+  },
+  locationLink: {
+    color: `${theme.palette.primary.main} !important`,
+    border: `1px solid ${alpha(theme.palette.primary.main, 0.18)}`,
+    background: `${alpha(theme.palette.primary.main, 0.05)} !important`,
+    borderRadius: 999,
+    minWidth: 0,
+    padding: `${theme.spacing(0.8, 1.35)} !important`,
+    fontSize: 12,
+    fontWeight: theme.typography.fontWeightBold,
+    lineHeight: 1.2,
+    textTransform: 'uppercase',
+    whiteSpace: 'nowrap',
+    '& .MuiButton-startIcon': {
+      marginRight: theme.spacing(0.5),
+      '& svg': {
+        fontSize: 17,
+      },
+    },
+    '&:hover': {
+      borderColor: alpha(theme.palette.primary.main, 0.34),
+      background: `${alpha(theme.palette.primary.main, 0.09)} !important`,
+    },
+  },
+  locationPrimary: {
+    position: 'relative',
+    top: 1,
+  },
+  languageButton: {
+    borderRadius: 999,
+    minWidth: 78,
+    padding: theme.spacing(0.75, 1.5),
+    fontSize: 13,
+    fontWeight: theme.typography.fontWeightBold,
+    lineHeight: 1.2,
+    background: alpha(theme.palette.background.paper, 0.82),
+    '& .MuiButton-startIcon': {
+      marginRight: theme.spacing(0.75),
+      '& svg': {
+        fontSize: 18,
+      }
+    },
+    '& .MuiButton-endIcon': {
+      marginLeft: theme.spacing(0.25),
+      '& svg': {
+        fontSize: 18,
+      }
+    },
+    '&:hover': {
+      background: alpha(theme.palette.primary.main, 0.08),
+    },
+  },
+  languageButtonMobile: {
+    width: '100%',
+    justifyContent: 'center',
+    margin: theme.spacing(1, 0),
+    padding: theme.spacing(1.25, 1.5),
+    fontSize: 15,
   },
   navAuth: {
     position: 'relative',
@@ -350,6 +423,9 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
         animationTimingFunction: 'ease'
       },
     }
+  },
+  mobileLanguage: {
+    padding: theme.spacing(0, 2),
   },
   menuList: {
     textTransform: 'capitalize',

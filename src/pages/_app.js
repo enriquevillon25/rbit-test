@@ -10,7 +10,6 @@ import { prefixer } from 'stylis';
 import CssBaseline from '@mui/material/CssBaseline';
 import LoadingBar from 'react-top-loading-bar';
 import { appWithTranslation } from 'next-i18next';
-import lngDetector from '../lib/languageDetector';
 import appTheme from '../theme/appTheme';
 /* import css vendors */
 import 'animate.css/animate.css';
@@ -24,6 +23,24 @@ import 'vendors/slick/slick-theme.css';
 let themeType = '';
 if (typeof Storage !== 'undefined') { // eslint-disable-line
   themeType = localStorage.getItem('luxiTheme');
+}
+
+const languageStorageKey = 'rbit-language';
+const supportedLanguages = ['es', 'ca', 'en'];
+
+function getCurrentLanguage() {
+  if (typeof window === 'undefined') {
+    return 'es';
+  }
+
+  const routeLanguage = window.location.pathname.split('/')[1];
+  const storedLanguage = window.localStorage.getItem(languageStorageKey);
+
+  if (supportedLanguages.includes(routeLanguage)) {
+    return routeLanguage;
+  }
+
+  return supportedLanguages.includes(storedLanguage) ? storedLanguage : 'es';
 }
 
 const isBrowser = typeof document !== 'undefined';
@@ -53,7 +70,7 @@ function MyApp(props) {
   const { Component, pageProps, router } = props; // eslint-disable-line
   const [loading, setLoading] = useState(0);
 
-  const curLang = lngDetector.detect();
+  const curLang = getCurrentLanguage();
 
   const themeName = 'smart';
   const defaultTheme = 'light';

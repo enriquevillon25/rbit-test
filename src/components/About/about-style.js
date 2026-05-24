@@ -1,4 +1,5 @@
 import { makeStyles } from 'tss-react/mui';
+import { shadowTokens } from 'theme/tokens';
 import pattern from 'public/images/education/bg-pattern.png';
 
 const aboutStyles = makeStyles({ uniqId: 'about' })(theme => ({
@@ -57,7 +58,7 @@ const aboutStyles = makeStyles({ uniqId: 'about' })(theme => ({
     }
   },
   illustration: {
-    boxShadow: '0 0px 18px 0 rgba(0, 0, 0, 0.17)',
+    boxShadow: shadowTokens.image,
     position: 'absolute',
     border: `15px solid ${theme.palette.primary.main}`,
     background: theme.palette.primary.main,

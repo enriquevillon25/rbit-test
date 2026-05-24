@@ -1,13 +1,15 @@
 import Banner from "components/Banner";
-import Feature from "components/Feature";
-import Explore from "components/Explore";
-import PopularCourse from "components/PopularCourse";
-import About from "components/About";
 import Testimonials from "components/Testimonials";
 import Subscribe from "components/SubscribeForm";
-import LocalBusinessSEOContent from "components/seo/LocalBusinessSEOContent";
 import SEOFaqSection from "components/seo/SEOFaqSection";
 import type { LandingSectionConfig } from "../types";
+import {
+  LocalServiceSection,
+  MainServicesSection,
+  ProblemSolutionsSection,
+  TrustSection,
+  WorkProcessSection,
+} from "../components/HomeSections";
 
 export const landingSections: LandingSectionConfig[] = [
   {
@@ -15,39 +17,35 @@ export const landingSections: LandingSectionConfig[] = [
     Component: Banner,
   },
   {
-    id: "feature",
-    Component: Feature,
-    spacing: "top",
+    id: "services",
+    Component: MainServicesSection,
   },
   {
-    id: "explore",
-    Component: Explore,
+    id: "problems",
+    Component: ProblemSolutionsSection,
   },
   {
-    id: "popular",
-    Component: PopularCourse,
-    spacing: "topShort",
+    id: "why-rbit",
+    Component: TrustSection,
   },
   {
-    id: "about",
-    Component: About,
+    id: "process",
+    Component: WorkProcessSection,
   },
   {
-    id: "local-seo",
-    Component: LocalBusinessSEOContent,
+    id: "local",
+    Component: LocalServiceSection,
+  },
+  {
+    id: "testimonials",
+    Component: Testimonials,
   },
   {
     id: "faq",
     Component: SEOFaqSection,
   },
   {
-    id: "testimonials",
-    Component: Testimonials,
-    spacing: "top",
-  },
-  {
-    id: "subscribe",
+    id: "contact",
     Component: Subscribe,
-    spacing: "topShort",
   },
 ];
