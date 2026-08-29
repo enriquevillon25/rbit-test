@@ -57,12 +57,37 @@ const useStyles = makeStyles({ uniqId: "home_sections" })((theme) => ({
     color: theme.palette.text.secondary,
     lineHeight: "28px",
   },
+  serviceGrid: {
+    alignItems: "stretch",
+  },
+  serviceGridItem: {
+    display: "flex",
+  },
   card: {
     height: "100%",
+    width: "100%",
     padding: theme.spacing(3.25),
     borderRadius: 8,
     border: `1px solid ${theme.palette.divider}`,
     boxShadow: "none",
+    display: "flex",
+    flexDirection: "column",
+  },
+  serviceDescription: {
+    flexGrow: 1,
+  },
+  serviceButtonWrap: {
+    marginTop: "auto",
+    paddingTop: theme.spacing(3),
+  },
+  serviceButton: {
+    minWidth: 140,
+    minHeight: 42,
+    justifyContent: "center",
+    whiteSpace: "nowrap",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
   },
   cardTitle: {
     fontWeight: theme.typography.fontWeightBold,
@@ -117,16 +142,30 @@ export function MainServicesSection(): JSX.Element {
             {content.sections.servicesText}
           </Typography>
         </div>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} className={classes.serviceGrid}>
           {content.homeServices.map((service) => (
-            <Grid item xs={12} sm={6} md={4} key={service.title}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              key={service.title}
+              className={classes.serviceGridItem}
+            >
               <Paper className={classes.card}>
                 <Typography component="h3" variant="h6" className={classes.cardTitle}>
                   {service.title}
                 </Typography>
-                <Typography className={classes.text}>{service.description}</Typography>
-                <Box mt={2}>
-                  <Button href={service.href} color="primary" variant="outlined">
+                <Typography className={`${classes.text} ${classes.serviceDescription}`}>
+                  {service.description}
+                </Typography>
+                <Box className={classes.serviceButtonWrap}>
+                  <Button
+                    href={service.href}
+                    color="primary"
+                    variant="outlined"
+                    className={classes.serviceButton}
+                  >
                     {content.sections.serviceButton}
                   </Button>
                 </Box>
@@ -264,7 +303,13 @@ export function LocalServiceSection(): JSX.Element {
                 <Button
                   color="primary"
                   variant="contained"
-                  onClick={handleWhatsApp}
+                  onClick={() => {
+                    handleWhatsApp({
+                      ctaLocation: "home_local_service",
+                      language: content.language,
+                      label: localServiceInfo.cta,
+                    });
+                  }}
                 >
                   {localServiceInfo.cta}
                 </Button>

@@ -16,7 +16,8 @@ function Banner() {
   const isDesktop = useClientMediaQuery(theme.breakpoints.up("lg"));
 
   const { classes } = useStyles() as any;
-  const { hero } = useLocalizedContent();
+  const content = useLocalizedContent();
+  const { hero } = content;
 
   return (
     <div className={classes.heroContent}>
@@ -35,7 +36,13 @@ function Banner() {
               <Button
                 color="primary"
                 variant="contained"
-                onClick={handleWhatsApp}
+                onClick={() => {
+                  handleWhatsApp({
+                    ctaLocation: "home_hero",
+                    language: content.language,
+                    label: hero.primaryCta,
+                  });
+                }}
                 className={classes.primaryCta}
               >
                 {hero.primaryCta}

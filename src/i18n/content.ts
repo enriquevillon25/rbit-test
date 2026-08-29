@@ -144,11 +144,21 @@ const routeByLanguage: Record<SupportedLanguage, string> = {
 const sharedBusiness = {
   location: "Carrer de Bailèn, 109 · Eixample · Barcelona",
   address: "Carrer de Bailèn, 109, Local 2 · Eixample · 08009 Barcelona",
-  schedule:
-    businessInfo.openingHours[0] || "TODO_SCHEDULE: confirmar horario de atención",
   phone:
     businessInfo.contact.telephone ||
     "TODO_PHONE: confirmar teléfono o WhatsApp",
+};
+
+const localizedSchedule: Record<SupportedLanguage, string> = {
+  es: businessInfo.openingHours[0]
+    ? "Lunes a sábado, 10:00-20:00"
+    : "TODO_SCHEDULE: confirmar horario de atención",
+  ca: businessInfo.openingHours[0]
+    ? "Dilluns a dissabte, 10:00-20:00"
+    : "TODO_SCHEDULE: confirmar horari d'atenció",
+  en: businessInfo.openingHours[0]
+    ? "Monday to Saturday, 10:00-20:00"
+    : "TODO_SCHEDULE: confirm opening hours",
 };
 
 const contentByLanguage: Record<SupportedLanguage, LandingContent> = {
@@ -337,7 +347,7 @@ const contentByLanguage: Record<SupportedLanguage, LandingContent> = {
       address: sharedBusiness.address,
       scheduleLabel: "Horario",
       phoneLabel: "WhatsApp/Teléfono",
-      schedule: sharedBusiness.schedule,
+      schedule: localizedSchedule.es,
       phone: sharedBusiness.phone,
       description:
         "RBIT Informática ofrece servicio técnico informático en Barcelona desde Carrer de Bailèn, en la zona de Eixample. Atendemos reparaciones de ordenadores, portátiles, MacBook, móviles, cambio de SSD, instalación de Windows y recuperación de datos con diagnóstico claro y trato cercano.",
@@ -567,6 +577,7 @@ contentByLanguage.ca = {
     contactTitle: "Dades de contacte",
     scheduleLabel: "Horari",
     phoneLabel: "WhatsApp/Telèfon",
+    schedule: localizedSchedule.ca,
     description:
       "RBIT Informàtica ofereix servei tècnic informàtic a Barcelona des del Carrer de Bailèn, a la zona de l'Eixample. Atenem reparacions d'ordinadors, portàtils, MacBook, mòbils, canvi de SSD, instal·lació de Windows i recuperació de dades amb diagnòstic clar i tracte proper.",
     cta: "Contactar per WhatsApp",
@@ -791,6 +802,7 @@ contentByLanguage.en = {
     contactTitle: "Contact details",
     scheduleLabel: "Opening hours",
     phoneLabel: "WhatsApp/Phone",
+    schedule: localizedSchedule.en,
     description:
       "RBIT Informática provides IT repair service in Barcelona from Carrer de Bailèn, in the Eixample area. We handle computer, laptop, MacBook and mobile repairs, SSD upgrades, Windows installation and data recovery with clear diagnosis and close support.",
     cta: "Contact on WhatsApp",

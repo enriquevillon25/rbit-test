@@ -38,7 +38,13 @@ function SubscribeForm() {
             variant="contained"
             size="large"
             color="primary"
-            onClick={handleWhatsApp}
+            onClick={() => {
+              handleWhatsApp({
+                ctaLocation: "home_final_cta",
+                language: content.language,
+                label: content.sections.subscribeButton,
+              });
+            }}
           >
             {content.sections.subscribeButton}
           </Button>

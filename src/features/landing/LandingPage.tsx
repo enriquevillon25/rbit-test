@@ -10,6 +10,7 @@ import SeoHead from "./seo/SeoHead";
 import SectionRenderer from "./components/SectionRenderer";
 import { landingSections } from "./config/sections";
 import { useLandingLayout } from "./hooks/useLandingLayout";
+import HomeAnalytics from "./analytics/HomeAnalytics";
 import type { LandingPageProps, LandingSectionSpacing } from "./types";
 
 const sectionMargin = (margin: number): number => margin * 20;
@@ -59,6 +60,7 @@ function LandingPage(props: LandingPageProps): JSX.Element {
     <Fragment>
       <SeoHead content={content} />
       <JsonLd data={jsonLd} />
+      <HomeAnalytics language={content.language} />
       <CssBaseline />
       <MainContainer onToggleDark={onToggleDark} onToggleDir={onToggleDir}>
         <Fragment>
