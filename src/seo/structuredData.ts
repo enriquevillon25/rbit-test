@@ -1,5 +1,6 @@
 import { businessInfo } from "./businessInfo";
 import { defaultLandingContent, type LandingContent } from "i18n/content";
+import { getServicePageUrl, type ServicePageData } from "./servicePages";
 
 export type JsonLdSchema = Record<string, unknown>;
 
@@ -94,5 +95,70 @@ export function buildLandingJsonLd(
     buildLocalBusinessJsonLd(content),
     buildWebsiteJsonLd(content),
     buildFaqJsonLd(content),
+  ];
+}
+
+export function buildServicePageJsonLd(service: ServicePageData): JsonLdSchema[] {
+  const serviceUrl = getServicePageUrl(service);
+
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${serviceUrl}#service`,
+      name: service.serviceName,
+      serviceType: service.primaryKeyword,
+      description: service.description,
+      image: new URL(service.image, businessInfo.url).toString(),
+      areaServed: businessInfo.areaServed.map((name) => ({
+        "@type": name === "Barcelona" ? "City" : "AdministrativeArea",
+        name,
+      })),
+      provider: {
+        "@id": `${businessInfo.url}#business`,
+        name: businessInfo.name,
+        telephone: businessInfo.contact.telephone,
+        address: {
+          "@type": "PostalAddress",
+          ...businessInfo.address,
+        },
+      },
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        priceCurrency: "EUR",
+        url: serviceUrl,
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: service.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio",
+          item: businessInfo.url,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: service.serviceName,
+          item: serviceUrl,
+        },
+      ],
+    },
   ];
 }

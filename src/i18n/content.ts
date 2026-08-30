@@ -2,6 +2,7 @@ import { businessInfo } from "seo/businessInfo";
 import type { SeoFaq } from "seo/faqs";
 import type { SeoMetadata } from "seo/metadata";
 import type { SeoService } from "seo/services";
+import { getServicePageByName } from "seo/servicePages";
 import { getCanonicalUrl } from "./routes";
 import type { SupportedLanguage } from "./languages";
 
@@ -387,11 +388,15 @@ const contentByLanguage: Record<SupportedLanguage, LandingContent> = {
   en: {} as LandingContent,
 };
 
-contentByLanguage.es.homeServices = contentByLanguage.es.services.map((service) => ({
-  title: service.title,
-  description: service.description,
-  href: "#contact",
-}));
+contentByLanguage.es.homeServices = contentByLanguage.es.services.map((service) => {
+  const servicePage = getServicePageByName(service.title);
+
+  return {
+    title: service.title,
+    description: service.description,
+    href: servicePage ? `/${servicePage.slug}/` : "#contact",
+  };
+});
 contentByLanguage.es.featuredServices = contentByLanguage.es.services.slice(0, 6);
 
 contentByLanguage.ca = {

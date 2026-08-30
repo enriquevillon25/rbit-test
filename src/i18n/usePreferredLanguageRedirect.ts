@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { DEFAULT_LANGUAGE } from "./languages";
-import { detectPreferredLanguage, getStoredLanguagePreference } from "./detectPreferredLanguage";
+import {
+  detectPreferredLanguage,
+  getStoredLanguagePreference,
+  isSearchCrawler,
+} from "./detectPreferredLanguage";
 import { getLocalizedRoute } from "./routes";
 
 export function usePreferredLanguageRedirect(): void {
@@ -9,6 +13,10 @@ export function usePreferredLanguageRedirect(): void {
 
   useEffect(() => {
     if (router.pathname !== "/") {
+      return;
+    }
+
+    if (isSearchCrawler(window.navigator.userAgent)) {
       return;
     }
 

@@ -9,6 +9,12 @@ interface SeoHeadProps {
 
 function SeoHead({ content }: SeoHeadProps): JSX.Element {
   const { metadata } = content;
+  const currentLanguage = supportedLanguages.find(
+    (language) => language.code === content.language
+  );
+  const alternateLanguages = supportedLanguages.filter(
+    (language) => language.code !== content.language
+  );
 
   return (
     <Head>
@@ -17,13 +23,17 @@ function SeoHead({ content }: SeoHeadProps): JSX.Element {
       <meta name="keywords" content={metadata.keywords.join(", ")} />
       <meta name="robots" content="index, follow" />
       <meta name="author" content={metadata.businessName} />
+      <meta
+        httpEquiv="content-language"
+        content={currentLanguage?.htmlLang || content.htmlLang}
+      />
       <link rel="canonical" href={metadata.canonicalUrl} />
       {supportedLanguages.map((language) => {
         const localizedContent = getLocalizedContent(language.code);
 
         return (
           <link
-            key={language.code}
+            key={`alternate-${language.code}`}
             rel="alternate"
             hrefLang={language.htmlLang}
             href={localizedContent.metadata.canonicalUrl}
@@ -31,6 +41,7 @@ function SeoHead({ content }: SeoHeadProps): JSX.Element {
         );
       })}
       <link
+        key="alternate-x-default"
         rel="alternate"
         hrefLang="x-default"
         href={getLocalizedContent("es").metadata.canonicalUrl}
@@ -38,6 +49,13 @@ function SeoHead({ content }: SeoHeadProps): JSX.Element {
 
       <meta property="og:site_name" content={metadata.siteName} />
       <meta property="og:locale" content={metadata.locale} />
+      {alternateLanguages.map((language) => (
+        <meta
+          key={language.code}
+          property="og:locale:alternate"
+          content={getLocalizedContent(language.code).metadata.locale}
+        />
+      ))}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={metadata.canonicalUrl} />
       <meta property="og:title" content={metadata.title} />
