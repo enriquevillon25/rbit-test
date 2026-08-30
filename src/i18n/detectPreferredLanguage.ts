@@ -6,6 +6,8 @@ import {
 } from "./languages";
 
 const browserLanguagePriority: SupportedLanguage[] = ["ca", "en", "es"];
+const crawlerUserAgentPattern =
+  /bot|crawler|spider|crawling|googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebookexternalhit|twitterbot/i;
 
 function normalizeLanguage(language: string): string {
   return language.toLowerCase().split("-")[0];
@@ -33,6 +35,10 @@ export function detectBrowserLanguage(
       normalizedLanguages.includes(language)
     ) || DEFAULT_LANGUAGE
   );
+}
+
+export function isSearchCrawler(userAgent = ""): boolean {
+  return crawlerUserAgentPattern.test(userAgent);
 }
 
 export function detectPreferredLanguage(): SupportedLanguage {
