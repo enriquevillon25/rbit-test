@@ -19,6 +19,10 @@ const useStyles = makeStyles({ uniqId: "landing-page" })((theme) => ({
   containerWrap: {
     "& > section": {
       position: "relative",
+      scrollMarginTop: 112,
+      [theme.breakpoints.down("sm")]: {
+        scrollMarginTop: 92,
+      },
     },
   },
   spaceTop: {

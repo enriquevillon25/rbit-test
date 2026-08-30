@@ -113,38 +113,32 @@ const useStyles = makeStyles({ uniqId: 'banner' })((theme, _params, classes) => 
     position: 'relative',
     overflow: 'hidden',
     width: '100%',
-    maxWidth: 540,
+    maxWidth: 520,
     marginTop: theme.spacing(2.5),
     borderRadius: 10,
     border: `1px solid ${alpha(theme.palette.common.black, 0.06)}`,
-    boxShadow: theme.palette.mode === 'light' ? '0 18px 38px rgba(0, 0, 0, 0.13)' : shadowTokens.paperDarkStrong,
+    boxShadow: theme.palette.mode === 'light' ? '0 16px 34px rgba(0, 0, 0, 0.12)' : shadowTokens.paperDarkStrong,
     background: theme.palette.background.paper,
+    aspectRatio: '5 / 4',
     '& img': {
       display: 'block',
       width: '100%',
-      height: 440,
+      height: '100%',
       objectFit: 'cover',
-      objectPosition: 'center center',
+      objectPosition: 'center 45%',
     },
     [theme.breakpoints.down('lg')]: {
       maxWidth: 500,
-      '& img': {
-        height: 410,
-      },
     },
     [theme.breakpoints.down('md')]: {
       width: '100%',
-      maxWidth: 640,
+      maxWidth: 620,
       marginTop: theme.spacing(1),
-      '& img': {
-        height: 340,
-      },
+      aspectRatio: '16 / 10',
     },
     [theme.breakpoints.down('sm')]: {
       borderRadius: 8,
-      '& img': {
-        height: 250,
-      },
+      aspectRatio: '4 / 3',
     }
   },
   searchBanner: {

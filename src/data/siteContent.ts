@@ -10,7 +10,8 @@ export type LandingNavItem =
   | "services"
   | "problems"
   | "testimonials"
-  | "faq";
+  | "faq"
+  | "contact";
 
 export interface ImageTextItem {
   img: string;
@@ -77,6 +78,7 @@ export const navItems: LandingNavItem[] = [
   "problems",
   "testimonials",
   "faq",
+  "contact",
 ];
 
 export const serviceCategories: ImageTextItem[] = [

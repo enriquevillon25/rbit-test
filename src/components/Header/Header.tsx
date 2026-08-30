@@ -1,11 +1,10 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment, useMemo } from "react";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import Scrollspy from "react-scrollspy";
 import { useTranslation } from "lib/useTranslation";
 import useClientMediaQuery, { useIsMounted } from "lib/useClientMediaQuery";
 import MobileMenu from "./MobileMenu";
@@ -20,6 +19,7 @@ const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Carrer%20de%20Bail%C3%A8n%20109%20Local%202%20Barcelona";
 
 let counter = 0;
+const HEADER_SCROLL_GAP = 18;
 
 interface HeaderProps {
   onToggleDark: () => void;
@@ -48,6 +48,16 @@ function createData(name: string, url: string, offset: number): HeaderMenuItem {
   };
 }
 
+function getHeaderOffset(): number {
+  if (typeof document === "undefined") {
+    return 104;
+  }
+
+  const header = document.getElementById("header");
+
+  return (header?.offsetHeight || 86) + HEADER_SCROLL_GAP;
+}
+
 const SmoothAnchor = React.forwardRef<HTMLAnchorElement, SmoothAnchorProps>(
   function SmoothAnchor(props, ref) {
     const { offset = 0, onClick, href, ...rest } = props;
@@ -59,8 +69,9 @@ const SmoothAnchor = React.forwardRef<HTMLAnchorElement, SmoothAnchorProps>(
         if (target) {
           event.preventDefault();
           const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
+          const scrollOffset = typeof offset === "number" ? offset : getHeaderOffset();
           window.scroll({
-            top: offsetTop - offset,
+            top: Math.max(offsetTop - scrollOffset, 0),
             behavior: "smooth",
           });
         }
@@ -81,24 +92,58 @@ function Header(props: HeaderProps) {
   const isMounted = useIsMounted();
 
   const [fixed, setFixed] = useState(false);
-  let flagFixed = false;
-  const handleScroll = () => {
-    const doc = document.documentElement;
-    const scroll = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-    const newFlagFixed = scroll > 80;
-    if (flagFixed !== newFlagFixed) {
-      setFixed(newFlagFixed);
-      flagFixed = newFlagFixed;
-    }
-  };
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+
+    const updateHeaderState = () => {
+      const scroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const headerOffset = getHeaderOffset();
+      const activationLine = headerOffset + 24;
+      const nextFixed = scroll > 80;
+      const nextActiveSection =
+        navMenu.find((item) => {
+          const section = document.getElementById(item);
+
+          if (!section) {
+            return false;
+          }
+
+          const rect = section.getBoundingClientRect();
+
+          return rect.top <= activationLine && rect.bottom > activationLine;
+        }) || null;
+
+      setFixed(nextFixed);
+      setActiveSection(nextActiveSection);
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeaderState);
+        ticking = true;
+      }
+    };
+
+    updateHeaderState();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
   const { classes, cx } = useStyles() as any;
   const { invert } = props;
   const { t } = useTranslation("common");
 
-  const [menuList] = useState(navMenu.map(item => createData(item, "#" + item, 200)));
+  const menuList = useMemo(
+    () => navMenu.map((item) => createData(item, "#" + item, getHeaderOffset())),
+    []
+  );
   const [openDrawer, setOpenDrawer] = useState(false);
   const handleOpenDrawer = () => {
     setOpenDrawer(!openDrawer);
@@ -150,9 +195,12 @@ function Header(props: HeaderProps) {
             </nav>
             <nav className={cx(classes.navMenu, invert && classes.invert)}>
               {isMounted && isDesktop && (
-                <Scrollspy items={navMenu} currentClassName="active">
+                <ul>
                   {menuList.map((item) => (
-                    <li key={item.id.toString()}>
+                    <li
+                      key={item.id.toString()}
+                      className={activeSection === item.name ? "active" : undefined}
+                    >
                       {invert ? (
                         // eslint-disable-next-line
                         <Button component={Link as any} href={"/" + item.url}>
@@ -164,7 +212,7 @@ function Header(props: HeaderProps) {
                         // eslint-disable-next-line
                         <Button
                           component={SmoothAnchor as any}
-                          offset={item.offset || 0}
+                          offset={item.offset || getHeaderOffset()}
                           href={item.url}
                         >
                           <span className={classes.text}>
@@ -174,18 +222,7 @@ function Header(props: HeaderProps) {
                       )}
                     </li>
                   ))}
-                  <li>
-                    <Button
-                      component={SmoothAnchor as any}
-                      offset={120}
-                      href="#contact"
-                    >
-                      <span className={classes.text}>
-                        {t("education-landing.header_contact")}
-                      </span>
-                    </Button>
-                  </li>
-                </Scrollspy>
+                </ul>
               )}
             </nav>
             <nav className={classes.navActions} aria-label={t("education-landing.header_language")}>
