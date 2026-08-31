@@ -1,7 +1,7 @@
 import { logAnalyticsEvent } from "./firebaseAnalytics";
 
 export const analyticsEvents = {
-  homeScreenView: "screen_view",
+  homeScreenView: "homeview",
   whatsappLead: "generate_lead",
 } as const;
 

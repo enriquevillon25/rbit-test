@@ -42,14 +42,6 @@ function MobileMenu(props: MobileMenuProps) {
               <ListItemText primary={t('education-landing.header_' + item)} className={classes.menuList} />
             </ListItem>
           ))}
-          <ListItem
-            button
-            component="a"
-            href="#contact"
-            style={{ animationDuration: navMenu.length * 0.15 + 's' }}
-          >
-            <ListItemText primary={t('education-landing.header_contact')} className={classes.menuList} />
-          </ListItem>
           <Divider className={classes.dividerSidebar} />
           <ListItem
             button
