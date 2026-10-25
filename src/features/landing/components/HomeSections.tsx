@@ -122,6 +122,16 @@ const useStyles = makeStyles({ uniqId: "home_sections" })((theme) => ({
     marginTop: theme.spacing(1),
     color: theme.palette.text.secondary,
   },
+  localLinksTitle: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(1),
+    fontWeight: theme.typography.fontWeightBold,
+  },
+  localLinks: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: theme.spacing(1),
+  },
 }));
 
 export function MainServicesSection(): JSX.Element {
@@ -284,6 +294,23 @@ export function LocalServiceSection(): JSX.Element {
               {localServiceInfo.title}
             </Typography>
             <Typography className={classes.text}>{localServiceInfo.description}</Typography>
+            <Typography component="h3" variant="h6" className={classes.localLinksTitle}>
+              {localServiceInfo.linksTitle}
+            </Typography>
+            <Box className={classes.localLinks}>
+              {localServiceInfo.links.map((link) => (
+                <Button
+                  key={link.href}
+                  component="a"
+                  href={link.href}
+                  hrefLang={link.hrefLang}
+                  color="primary"
+                  variant="outlined"
+                >
+                  {link.label}
+                </Button>
+              ))}
+            </Box>
           </Grid>
           <Grid item xs={12} md={5}>
             <Paper className={classes.localPanel}>

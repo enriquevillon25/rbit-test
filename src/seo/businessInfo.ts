@@ -8,6 +8,7 @@ export interface BusinessAddress {
 
 export interface BusinessContact {
   telephone?: string;
+  displayTelephone?: string;
   email?: string;
 }
 
@@ -46,6 +47,7 @@ export const businessInfo: BusinessInfo = {
   },
   contact: {
     telephone: "+34666266295",
+    displayTelephone: "+34 666 266 295",
     email: "jvillonl@rbitinformatica.com",
   },
   areaServed: ["Barcelona", "Eixample", "Bailèn"],

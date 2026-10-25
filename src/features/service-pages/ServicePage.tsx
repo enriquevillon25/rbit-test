@@ -10,8 +10,7 @@ import JsonLd from "components/seo/JsonLd";
 import MainContainer from "components/MainContainer";
 import { businessInfo } from "seo/businessInfo";
 import {
-  getServicePageUrl,
-  servicePages,
+  getRelatedServicePages,
   type ServicePageData,
 } from "seo/servicePages";
 import { buildServicePageJsonLd } from "seo/structuredData";
@@ -77,6 +76,11 @@ const useStyles = makeStyles({ uniqId: "service_page" })((theme) => ({
     marginTop: theme.spacing(2.5),
     color: theme.palette.text.primary,
     fontWeight: theme.typography.fontWeightMedium,
+  },
+  phoneLink: {
+    color: "inherit",
+    textDecoration: "underline",
+    textUnderlineOffset: 3,
   },
   imagePanel: {
     position: "relative",
@@ -169,9 +173,7 @@ const useStyles = makeStyles({ uniqId: "service_page" })((theme) => ({
 function ServicePage(props: ServicePageProps): JSX.Element {
   const { service, onToggleDark, onToggleDir } = props;
   const { classes } = useStyles();
-  const relatedServices = servicePages
-    .filter((item) => item.slug !== service.slug)
-    .slice(0, 3);
+  const relatedServices = getRelatedServicePages(service);
   const jsonLd = buildServicePageJsonLd(service);
 
   return (
@@ -219,6 +221,18 @@ function ServicePage(props: ServicePageProps): JSX.Element {
                   </Box>
                   <Typography className={classes.address}>
                     {businessInfo.address.streetAddress} · Eixample · Barcelona
+                    {businessInfo.contact.telephone && (
+                      <>
+                        {" · "}
+                        <a
+                          className={classes.phoneLink}
+                          href={`tel:${businessInfo.contact.telephone}`}
+                        >
+                          {businessInfo.contact.displayTelephone ||
+                            businessInfo.contact.telephone}
+                        </a>
+                      </>
+                    )}
                   </Typography>
                 </Grid>
                 <Grid item xs={12} md={6}>

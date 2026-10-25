@@ -12,6 +12,12 @@ export interface HomeService {
   href: string;
 }
 
+export interface LocalServiceLink {
+  label: string;
+  href: string;
+  hrefLang?: string;
+}
+
 export interface HomeTextItem {
   title: string;
   description?: string;
@@ -28,6 +34,8 @@ export interface LocalServiceInfo {
   phone: string;
   description: string;
   cta: string;
+  linksTitle: string;
+  links: LocalServiceLink[];
 }
 
 export interface HomeHeroContent {
@@ -146,6 +154,7 @@ const sharedBusiness = {
   location: "Carrer de Bailèn, 109 · Eixample · Barcelona",
   address: "Carrer de Bailèn, 109, Local 2 · Eixample · 08009 Barcelona",
   phone:
+    businessInfo.contact.displayTelephone ||
     businessInfo.contact.telephone ||
     "TODO_PHONE: confirmar teléfono o WhatsApp",
 };
@@ -351,8 +360,26 @@ const contentByLanguage: Record<SupportedLanguage, LandingContent> = {
       schedule: localizedSchedule.es,
       phone: sharedBusiness.phone,
       description:
-        "RBIT Informática ofrece servicio técnico informático en Barcelona desde Carrer de Bailèn, en la zona de Eixample. Atendemos reparaciones de ordenadores, portátiles, MacBook, móviles, cambio de SSD, instalación de Windows y recuperación de datos con diagnóstico claro y trato cercano.",
+        "RBIT Informática ofrece servicio técnico informático en Carrer de Bailèn, en la Dreta de l'Eixample. Atendemos reparaciones de ordenadores, portátiles o laptops, MacBook y móviles, además de cambios de SSD, instalación de Windows y recuperación de datos para clientes de Eixample, Fort Pienc, Sagrada Família, Gràcia y otras zonas de Barcelona.",
       cta: "Contactar por WhatsApp",
+      linksTitle: "Servicios informáticos destacados",
+      links: [
+        {
+          label: "Reparación de portátiles en Barcelona",
+          href: "/reparacion-portatiles-barcelona/",
+          hrefLang: "es-ES",
+        },
+        {
+          label: "Reparación de ordenadores en Barcelona",
+          href: "/reparacion-ordenadores-barcelona/",
+          hrefLang: "es-ES",
+        },
+        {
+          label: "Servicio técnico informático en Eixample",
+          href: "/servicio-tecnico-informatico-eixample/",
+          hrefLang: "es-ES",
+        },
+      ],
     },
     sections: {
       servicesEyebrow: "Servicios principales",
@@ -584,8 +611,26 @@ contentByLanguage.ca = {
     phoneLabel: "WhatsApp/Telèfon",
     schedule: localizedSchedule.ca,
     description:
-      "RBIT Informàtica ofereix servei tècnic informàtic a Barcelona des del Carrer de Bailèn, a la zona de l'Eixample. Atenem reparacions d'ordinadors, portàtils, MacBook, mòbils, canvi de SSD, instal·lació de Windows i recuperació de dades amb diagnòstic clar i tracte proper.",
+      "RBIT Informàtica ofereix servei tècnic informàtic al Carrer de Bailèn, a la Dreta de l'Eixample. Atenem reparacions d'ordinadors, portàtils, MacBook i mòbils, a més de canvis de SSD, instal·lació de Windows i recuperació de dades per a clients de l'Eixample, Fort Pienc, Sagrada Família, Gràcia i altres zones de Barcelona.",
     cta: "Contactar per WhatsApp",
+    linksTitle: "Serveis informàtics destacats",
+    links: [
+      {
+        label: "Reparació de portàtils a Barcelona",
+        href: "/reparacion-portatiles-barcelona/",
+        hrefLang: "es-ES",
+      },
+      {
+        label: "Reparació d'ordinadors a Barcelona",
+        href: "/reparacion-ordenadores-barcelona/",
+        hrefLang: "es-ES",
+      },
+      {
+        label: "Servei tècnic informàtic a l'Eixample",
+        href: "/servicio-tecnico-informatico-eixample/",
+        hrefLang: "es-ES",
+      },
+    ],
   },
   sections: {
     servicesEyebrow: "Serveis principals",
@@ -809,8 +854,26 @@ contentByLanguage.en = {
     phoneLabel: "WhatsApp/Phone",
     schedule: localizedSchedule.en,
     description:
-      "RBIT Informática provides IT repair service in Barcelona from Carrer de Bailèn, in the Eixample area. We handle computer, laptop, MacBook and mobile repairs, SSD upgrades, Windows installation and data recovery with clear diagnosis and close support.",
+      "RBIT Informática provides IT repair service from Carrer de Bailèn in Dreta de l'Eixample. We repair computers, laptops, MacBook devices and mobiles, and provide SSD upgrades, Windows installation and data recovery for customers in Eixample, Fort Pienc, Sagrada Família, Gràcia and other Barcelona areas.",
     cta: "Contact on WhatsApp",
+    linksTitle: "Featured IT repair services",
+    links: [
+      {
+        label: "Laptop repair in Barcelona",
+        href: "/reparacion-portatiles-barcelona/",
+        hrefLang: "es-ES",
+      },
+      {
+        label: "Computer repair in Barcelona",
+        href: "/reparacion-ordenadores-barcelona/",
+        hrefLang: "es-ES",
+      },
+      {
+        label: "IT repair service in Eixample",
+        href: "/servicio-tecnico-informatico-eixample/",
+        hrefLang: "es-ES",
+      },
+    ],
   },
   sections: {
     servicesEyebrow: "Main services",
