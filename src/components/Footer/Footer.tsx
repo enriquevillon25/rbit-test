@@ -33,6 +33,14 @@ function Footer() {
   const isMobile = useClientMediaQuery(theme.breakpoints.down("md"));
   const footerSections = [
     {
+      title: content.localServiceInfo.linksTitle,
+      links: content.localServiceInfo.links.map((link) => ({
+        label: link.label,
+        href: link.href,
+        hrefLang: link.hrefLang,
+      })),
+    },
+    {
       title: content.footer.sectionTitle,
       links: [
         {
@@ -44,7 +52,10 @@ function Footer() {
           href: "/contact",
         },
         {
-          label: businessInfo.contact.telephone?.replace("+34", "") || "",
+          label:
+            businessInfo.contact.displayTelephone ||
+            businessInfo.contact.telephone ||
+            "",
           href: `tel:${businessInfo.contact.telephone || ""}`,
         },
         {
@@ -86,7 +97,7 @@ function Footer() {
               <Grid
                 item
                 xs={12}
-                md={8}
+                md={6}
                 key={footer.title}
                 className={classes.siteMapItem}
               >
@@ -105,6 +116,7 @@ function Footer() {
                         <li key={item.label}>
                           <Link
                             href={item.href}
+                            hrefLang={item.hrefLang}
                             variant="subtitle1"
                             color="textSecondary"
                           >
@@ -140,6 +152,7 @@ function Footer() {
                           <li key={item.label}>
                             <Link
                               href={item.href}
+                              hrefLang={item.hrefLang}
                               variant="subtitle1"
                               color="textSecondary"
                             >

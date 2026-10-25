@@ -20,7 +20,6 @@ function SeoHead({ content }: SeoHeadProps): JSX.Element {
     <Head>
       <title>{metadata.title}</title>
       <meta name="description" content={metadata.description} />
-      <meta name="keywords" content={metadata.keywords.join(", ")} />
       <meta name="robots" content="index, follow" />
       <meta name="author" content={metadata.businessName} />
       <meta

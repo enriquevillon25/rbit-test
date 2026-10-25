@@ -102,10 +102,11 @@ export const servicePages: ServicePageData[] = [
     h1: "Reparación de portátiles en Barcelona",
     eyebrow: "Portátiles Windows y equipos de trabajo",
     intro:
-      "Reparamos portátiles en Barcelona para usuarios que necesitan recuperar su equipo de trabajo, estudio o negocio con una revisión clara y soluciones adaptadas.",
+      "Reparamos ordenadores portátiles y laptops en Barcelona para usuarios que necesitan recuperar su equipo de trabajo, estudio o negocio con una revisión clara y soluciones adaptadas.",
     primaryKeyword: "reparación portátiles Barcelona",
     relatedKeywords: [
       "reparación portátil cerca de mí",
+      "reparar laptop Barcelona",
       "portátil no enciende Barcelona",
       "cambiar SSD portátil Barcelona",
       "servicio técnico Eixample",
@@ -137,6 +138,16 @@ export const servicePages: ServicePageData[] = [
         body:
           "Buscamos que el portátil vuelva a ser fiable para trabajar, estudiar o gestionar tu negocio, priorizando soluciones proporcionadas al valor del equipo.",
       },
+      {
+        title: "Pantalla, batería, teclado y conectores",
+        body:
+          "Revisamos los componentes que más sufren con el uso diario: pantalla, batería, teclado, bisagras, cargador y conector de corriente. Antes de sustituir una pieza comprobamos la causa del fallo y la disponibilidad del repuesto compatible.",
+      },
+      {
+        title: "Qué traer para facilitar el diagnóstico",
+        body:
+          "Trae el portátil con su cargador y explícanos cuándo apareció el problema, qué mensajes muestra y si sufrió una caída, líquido o sobrecalentamiento. Si todavía arranca y tienes archivos importantes, recomendamos realizar una copia de seguridad antes de cualquier intervención.",
+      },
     ],
     faqs: [
       {
@@ -152,6 +163,16 @@ export const servicePages: ServicePageData[] = [
       {
         question: "¿Dónde está el servicio técnico?",
         answer: `Estamos en ${address}, zona Eixample / Bailèn.`,
+      },
+      {
+        question: "¿También reparáis laptops y portátiles Windows?",
+        answer:
+          "Sí. En España se utiliza más el término portátil, pero revisamos equipos que también se conocen como laptops: problemas de arranque, pantalla, batería, teclado, almacenamiento, memoria y temperatura.",
+      },
+      {
+        question: "¿Debo llevar el cargador del portátil?",
+        answer:
+          "Es recomendable, especialmente si el equipo no carga, se apaga o no enciende, porque permite comprobar el cargador y el conector durante el diagnóstico.",
       },
     ],
   },
@@ -415,11 +436,12 @@ export const servicePages: ServicePageData[] = [
     h1: "Servicio técnico informático en Eixample",
     eyebrow: "Taller local en Carrer de Bailèn",
     intro:
-      "RBIT Informática ofrece servicio técnico informático en Eixample para particulares y empresas que necesitan diagnóstico, reparación o mejora de sus equipos.",
+      "RBIT Informática ofrece servicio técnico informático en la Dreta de l'Eixample para particulares y pequeños negocios que necesitan diagnóstico, reparación o mejora de sus equipos.",
     primaryKeyword: "servicio técnico Eixample",
     relatedKeywords: [
       "servicio técnico informático Barcelona",
       "servicio técnico Bailèn Barcelona",
+      "servicio técnico Dreta de l'Eixample",
       "tienda informática Eixample",
       "reparación portátil cerca de mí",
     ],
@@ -430,6 +452,7 @@ export const servicePages: ServicePageData[] = [
       "Reparación de PC, portátiles, MacBook y móviles",
       "Diagnóstico y presupuesto antes de reparar",
       "Soporte para hardware, software y datos",
+      "Atención para particulares y pequeños negocios",
     ],
     problems: [
       "Equipo lento",
@@ -443,12 +466,22 @@ export const servicePages: ServicePageData[] = [
       {
         title: "Soporte informático cerca de Bailèn",
         body:
-          "Estamos en Eixample, cerca de Carrer de Bailèn, para atender reparaciones y consultas informáticas con trato cercano y explicaciones claras.",
+          "Estamos en Carrer de Bailèn, 109, Local 2, en la Dreta de l'Eixample. Atendemos a clientes de Eixample, Fort Pienc, Sagrada Família, Gràcia y otras zonas de Barcelona con trato directo y explicaciones claras.",
       },
       {
         title: "Soluciones para casa y negocio",
         body:
           "Podemos revisar ordenadores, portátiles, MacBook, móviles, redes, Windows, discos y rendimiento para elegir una solución proporcional a cada caso.",
+      },
+      {
+        title: "Diagnóstico antes de decidir",
+        body:
+          "Comprobamos los síntomas y el estado del equipo antes de plantear una reparación, ampliación o recuperación de datos. Así puedes conocer la viabilidad y el presupuesto antes de autorizar el trabajo.",
+      },
+      {
+        title: "Qué traer al servicio técnico",
+        body:
+          "Trae el equipo y, cuando sea relevante, su cargador o accesorios relacionados con el fallo. Indicar cuándo empezó el problema, qué mensajes aparecen y si hubo caída, líquido o sobrecalentamiento ayuda a orientar la revisión.",
       },
     ],
     faqs: [
@@ -465,6 +498,16 @@ export const servicePages: ServicePageData[] = [
         question: "¿Puedo contactar por WhatsApp?",
         answer:
           "Sí. Puedes pedir orientación inicial por WhatsApp antes de traer el equipo o visitar el local.",
+      },
+      {
+        question: "¿Qué zonas cercanas atendéis?",
+        answer:
+          "Por nuestra ubicación en Carrer de Bailèn atendemos especialmente a clientes de la Dreta de l'Eixample, Fort Pienc, Sagrada Família y Gràcia, además de otras zonas de Barcelona.",
+      },
+      {
+        question: "¿Debo llevar el cargador y los accesorios?",
+        answer:
+          "Conviene traer el cargador si el ordenador o portátil no carga, se apaga o no enciende. También es útil traer cualquier accesorio directamente relacionado con la avería.",
       },
     ],
   },
@@ -544,4 +587,55 @@ export function getServicePageUrl(service: ServicePageData): string {
 
 export function getServicePageByName(serviceName: string): ServicePageData | undefined {
   return servicePages.find((service) => service.serviceName === serviceName);
+}
+
+const relatedServiceSlugs: Record<string, string[]> = {
+  "reparacion-ordenadores-barcelona": [
+    "reparacion-portatiles-barcelona",
+    "servicio-tecnico-informatico-eixample",
+    "cambio-ssd-portatil-barcelona",
+  ],
+  "reparacion-portatiles-barcelona": [
+    "cambio-ssd-portatil-barcelona",
+    "reparacion-ordenadores-barcelona",
+    "servicio-tecnico-informatico-eixample",
+  ],
+  "reparacion-macbook-barcelona": [
+    "reparacion-portatiles-barcelona",
+    "recuperacion-datos-barcelona",
+    "servicio-tecnico-informatico-eixample",
+  ],
+  "recuperacion-datos-barcelona": [
+    "reparacion-ordenadores-barcelona",
+    "reparacion-portatiles-barcelona",
+    "servicio-tecnico-informatico-eixample",
+  ],
+  "reparacion-moviles-barcelona": [
+    "servicio-tecnico-informatico-eixample",
+    "tienda-informatica-eixample",
+    "recuperacion-datos-barcelona",
+  ],
+  "cambio-ssd-portatil-barcelona": [
+    "reparacion-portatiles-barcelona",
+    "reparacion-ordenadores-barcelona",
+    "servicio-tecnico-informatico-eixample",
+  ],
+  "servicio-tecnico-informatico-eixample": [
+    "reparacion-portatiles-barcelona",
+    "reparacion-ordenadores-barcelona",
+    "tienda-informatica-eixample",
+  ],
+  "tienda-informatica-eixample": [
+    "servicio-tecnico-informatico-eixample",
+    "reparacion-portatiles-barcelona",
+    "reparacion-ordenadores-barcelona",
+  ],
+};
+
+export function getRelatedServicePages(service: ServicePageData): ServicePageData[] {
+  const relatedSlugs = relatedServiceSlugs[service.slug] || [];
+
+  return relatedSlugs
+    .map((slug) => getServicePageBySlug(slug))
+    .filter((related): related is ServicePageData => Boolean(related));
 }
