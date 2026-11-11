@@ -14,10 +14,6 @@ function ServiceSeoHead({ service }: ServiceSeoHeadProps): JSX.Element {
     <Head>
       <title>{service.title}</title>
       <meta name="description" content={service.description} />
-      <meta
-        name="keywords"
-        content={[service.primaryKeyword, ...service.relatedKeywords].join(", ")}
-      />
       <meta name="robots" content="index, follow" />
       <meta name="author" content={businessInfo.name} />
       <meta httpEquiv="content-language" content="es-ES" />

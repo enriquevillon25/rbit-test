@@ -35,8 +35,14 @@ export function buildLocalBusinessJsonLd(
     description: content.metadata.description,
     telephone: businessInfo.contact.telephone,
     email: businessInfo.contact.email,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: businessInfo.contact.telephone,
+      contactType: "customer service",
+      availableLanguage: ["Spanish", "Catalan", "English"],
+    },
     priceRange: businessInfo.priceRange,
-    sameAs: businessInfo.sameAs,
+    ...(businessInfo.sameAs.length > 0 ? { sameAs: businessInfo.sameAs } : {}),
     address: {
       "@type": "PostalAddress",
       ...businessInfo.address,
@@ -102,6 +108,7 @@ export function buildServicePageJsonLd(service: ServicePageData): JsonLdSchema[]
   const serviceUrl = getServicePageUrl(service);
 
   return [
+    buildLocalBusinessJsonLd(),
     {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -109,6 +116,7 @@ export function buildServicePageJsonLd(service: ServicePageData): JsonLdSchema[]
       name: service.serviceName,
       serviceType: service.primaryKeyword,
       description: service.description,
+      inLanguage: businessInfo.language,
       image: new URL(service.image, businessInfo.url).toString(),
       areaServed: businessInfo.areaServed.map((name) => ({
         "@type": name === "Barcelona" ? "City" : "AdministrativeArea",

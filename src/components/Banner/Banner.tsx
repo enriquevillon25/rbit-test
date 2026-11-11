@@ -54,7 +54,13 @@ function Banner() {
           </Grid>
           <Grid item lg={6} md={6} xs={12} className={classes.imageGrid}>
             <div className={classes.heroImageCard}>
-              <img src={hero.image} alt={hero.imageAlt} />
+              <img
+                src={hero.image}
+                alt={hero.imageAlt}
+                width={1024}
+                height={576}
+                fetchPriority="high"
+              />
             </div>
           </Grid>
         </Grid>
